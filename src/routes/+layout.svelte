@@ -9,9 +9,10 @@
         RUNE Tablet
       </p>
       <ul class="menu-list">
-        <li><a>Character</a></li>
-        <li><a>Cards</a></li>
-        <li><a>Scenarios</a></li>
+        <li><a href="{base}/">About</a></li>
+        <li><a href="{base}/character">Character</a></li>
+        <li><a href="{base}/cards">Cards</a></li>
+        <li><a href="{base}/scenarios">Scenarios</a></li>
       </ul>
     </aside>
     <div class="column">
