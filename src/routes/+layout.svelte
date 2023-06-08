@@ -2,10 +2,21 @@
   import { base } from "$app/paths";
 </script>
 
-
-<header>
-  <h1>RUNE Tablet</h1>
-  <p>Play RUNE RPG in the browser</p>
-</header>
-<slot></slot>
+<div class="section">
+  <div class="columns">
+    <aside class="menu column is-one-fifth">
+      <p class="menu-label">
+        RUNE Tablet
+      </p>
+      <ul class="menu-list">
+        <li><a>Character</a></li>
+        <li><a>Cards</a></li>
+        <li><a>Scenarios</a></li>
+      </ul>
+    </aside>
+    <div class="column">
+      <slot></slot>
+    </div>
+  </div>
+</div>
 
