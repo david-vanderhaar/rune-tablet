@@ -1,14 +1,37 @@
 <script>
+  import TagInput from "../../components/TagInput.svelte";
+
   let title = '';
-  let itemTypeTags = '';
+  let itemTags = []
+  let range = 0;
   let flavorText = '';
   let abilities = '';
+
+  function handleTagsChange(updatedTags) {
+    itemTags = updatedTags;
+  }
+
+  let rangeLabel;
+  const rangeLabelMap = {
+    0: 'Same',
+    1: 'Adjacent',
+    2: '2',
+    3: '3'
+  }
+
+  function calculateRangeLabel() {
+    rangeLabel = rangeLabelMap[range]
+  }
+
+  $: {
+    calculateRangeLabel()
+  }
 
   function saveCard() {
     // Implement your logic to save the card data here
     console.log({
       title,
-      itemTypeTags,
+      range,
       flavorText,
       abilities,
     });
@@ -31,18 +54,22 @@
           </div>
         </div>
 
+        <TagInput tags={itemTags} onTagsChange={handleTagsChange} />
+
         <div class="field">
-          <label class="label">Item Type Tags</label>
+          <label class="label">Range</label>
           <div class="control">
-            <input
-              class="input"
-              type="text"
-              bind:value={itemTypeTags}
-              placeholder="Enter item type tags"
-            />
+            <div class="select">
+              <select bind:value={range}>
+                <option value="0" label="Same (0)">0</option>
+                <option value="1" label="Adjacent (1)">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </div>
           </div>
         </div>
-
+        
         <div class="field">
           <label class="label">Flavor Text</label>
           <div class="control">
@@ -81,7 +108,10 @@
         <div class="card">
           <div class="card-content">
             <p class="title">{title}</p>
-            <p class="subtitle">{itemTypeTags}</p>
+            <p class="subtitle">{itemTags.join(', ')}</p>
+            {#if range}
+              <p class="subtitle">Range: {rangeLabelMap[range]}</p>
+            {/if}
             <div class="content">
               <p>{flavorText}</p>
               <hr />
