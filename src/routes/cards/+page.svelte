@@ -1,9 +1,9 @@
 <script>
   import TagInput from "../../components/TagInput.svelte";
 
-  let title = '';
-  let itemTags = []
-  let range = 0;
+  let title = 'Item Name';
+  let itemTags = ['Weapon', 'Magic']
+  let range = null;
   let flavorText = '';
   let abilities = '';
 
@@ -112,15 +112,17 @@
             {#if range}
               <p class="subtitle">Range: {rangeLabelMap[range]}</p>
             {/if}
+            <hr />
             <div class="content">
-              <p>{flavorText}</p>
-              <hr />
               <p>Abilities:</p>
               <ul>
                 {#each abilities.split('\n') as ability}
                   <li>{ability}</li>
                 {/each}
               </ul>
+              <hr />
+              <p>Special Definitions</p>
+              <p>{flavorText}</p>
             </div>
           </div>
         </div>
