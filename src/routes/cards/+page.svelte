@@ -1,11 +1,15 @@
 <script>
+  import ActionForm from "../../components/ActionForm.svelte";
   import TagInput from "../../components/TagInput.svelte";
+  import TagPicker from '../../components/TagPicker.svelte';
 
+  let selectedTags = [];
+  let availableActionTags = ['Cleave', 'Unblockable', 'Piercing'];
   let title = 'Item Name';
   let itemTags = ['Weapon', 'Magic']
   let range = null;
   let flavorText = '';
-  let abilities = '';
+  let actions = '';
 
   function handleTagsChange(updatedTags) {
     itemTags = updatedTags;
@@ -33,7 +37,7 @@
       title,
       range,
       flavorText,
-      abilities,
+      actions,
     });
   }
 </script>
@@ -69,7 +73,20 @@
             </div>
           </div>
         </div>
-        
+
+        <ActionForm />
+
+        <div class="field">
+          <label class="label">Actions</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              bind:value={actions}
+              placeholder="Enter actions"
+            ></textarea>
+          </div>
+        </div>
+
         <div class="field">
           <label class="label">Flavor Text</label>
           <div class="control">
@@ -77,17 +94,6 @@
               class="textarea"
               bind:value={flavorText}
               placeholder="Enter flavor text"
-            ></textarea>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label">Abilities</label>
-          <div class="control">
-            <textarea
-              class="textarea"
-              bind:value={abilities}
-              placeholder="Enter abilities"
             ></textarea>
           </div>
         </div>
@@ -108,15 +114,17 @@
         <div class="card">
           <div class="card-content">
             <p class="title">{title}</p>
-            <p class="subtitle">{itemTags.join(', ')}</p>
-            {#if range}
-              <p class="subtitle">Range: {rangeLabelMap[range]}</p>
-            {/if}
+            <div class="subtitle">
+              <p>{itemTags.join(', ')}</p>
+              {#if range}
+                <p>Range: {rangeLabelMap[range]}</p>
+              {/if}
+            </div>
             <hr />
             <div class="content">
-              <p>Abilities:</p>
+              <p>Actions:</p>
               <ul>
-                {#each abilities.split('\n') as ability}
+                {#each actions.split('\n') as ability}
                   <li>{ability}</li>
                 {/each}
               </ul>
