@@ -3,13 +3,19 @@
   import TagInput from "../../components/TagInput.svelte";
   import TagPicker from '../../components/TagPicker.svelte';
 
-  let selectedTags = [];
-  let availableActionTags = ['Cleave', 'Unblockable', 'Piercing'];
   let title = 'Item Name';
   let itemTags = ['Weapon', 'Magic']
   let range = null;
   let flavorText = '';
-  let actions = '';
+  let actions = [];
+
+  function onAddAction(action) {
+    actions = [...actions, action];
+  }
+
+  function onRemoveAction(action) {
+    actions = actions.filter((a) => a !== action);
+  }
 
   function handleTagsChange(updatedTags) {
     itemTags = updatedTags;
@@ -74,18 +80,7 @@
           </div>
         </div>
 
-        <ActionForm />
-
-        <div class="field">
-          <label class="label">Actions</label>
-          <div class="control">
-            <textarea
-              class="textarea"
-              bind:value={actions}
-              placeholder="Enter actions"
-            ></textarea>
-          </div>
-        </div>
+        <ActionForm {onAddAction} {onRemoveAction} {actions} />
 
         <div class="field">
           <label class="label">Flavor Text</label>
@@ -122,15 +117,14 @@
             </div>
             <hr />
             <div class="content">
-              <p>Actions:</p>
-              <ul>
-                {#each actions.split('\n') as ability}
-                  <li>{ability}</li>
+              {#each actions as {triggers, actionEffect, extraEffects}}
+                <div class='mb-4'>
+                  <div>{triggers.join(', ') + (triggers.length ? ' - ' : '')} {actionEffect}</div>
+                  <div><em>{extraEffects.join(', ')}</em></div>
+                </div>
                 {/each}
-              </ul>
               <hr />
-              <p>Special Definitions</p>
-              <p>{flavorText}</p>
+              <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
             </div>
           </div>
         </div>

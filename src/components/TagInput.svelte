@@ -38,7 +38,13 @@
           />
         </div>
         <div class="control">
-          <button class="button is-primary" on:click={addTag}>Add Tag</button>
+          <button 
+            class="button is-primary"
+            on:click={addTag}
+            disabled={!newTag.trim()}
+          >
+            Add Tag
+          </button>
         </div>
       </div>
       <div class="tags">

@@ -2,6 +2,7 @@
   export let selectedTags = [];
   export let availableTags = [];
   export let label = 'Tags';
+  export let onTagsChange = () => null;
 
   function toggleTag(tag) {
     if (selectedTags.includes(tag)) {
@@ -9,6 +10,7 @@
     } else {
       selectedTags = [...selectedTags, tag];
     }
+    onTagsChange(selectedTags);
   }
 </script>
 
