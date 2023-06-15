@@ -3,6 +3,7 @@
   export let availableTags = [];
   export let label = 'Tags';
   export let onTagsChange = () => null;
+  export let tagSize = null;
 
   function toggleTag(tag) {
     if (selectedTags.includes(tag)) {
@@ -19,7 +20,7 @@
   <div class="tags">
     {#each availableTags as tag}
       <span
-        class="tag"
+        class="tag {tagSize ? `tag-picker-size-${tagSize}` : ''}"
         class:selected={selectedTags.includes(tag)}
         on:click={() => toggleTag(tag)}
       >
@@ -46,5 +47,19 @@
   .tag.selected {
     background-color: #3273dc;
     color: #fff;
+  }
+
+  .tag-picker-size-small {
+    font-size: 0.75rem;
+  }
+
+  .tag-picker-size-medium {
+    font-size: 4rem;
+    height: 4rem;
+  }
+
+  .tag-picker-size-large {
+    font-size: 6rem;
+    height: 6rem;
   }
 </style>

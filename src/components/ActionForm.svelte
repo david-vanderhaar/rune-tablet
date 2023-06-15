@@ -1,10 +1,19 @@
 <script>
-  import TagPicker from "./TagPicker.svelte";
+  import ActionDisplay from "./ActionDisplay.svelte";
+import TagPicker from "./TagPicker.svelte";
   export let onAddAction = () => null;
   export let onRemoveAction = () => null;
   export let actions = [];
 
-  const triggerOptions = [1, 2, 3, 4, 5, 6]
+  // const triggerOptions = [1, 2, 3, 4, 5, 6]
+  const triggerOptions = [
+    '⚀', // Unicode character for dice face 1
+    '⚁', // Unicode character for dice face 2
+    '⚂', // Unicode character for dice face 3
+    '⚃', // Unicode character for dice face 4
+    '⚄', // Unicode character for dice face 5
+    '⚅'  // Unicode character for dice face 6
+  ];
   const extraEffectOptions = ['Cleave', 'Unblockable', 'Piercing'];
 
   let triggers = [];
@@ -36,6 +45,7 @@
       availableTags={triggerOptions}
       selectedTags={triggers}
       onTagsChange={(updatedTags) => (triggers = updatedTags)}
+      tagSize="large"
     />
 
     <div class="field">
@@ -70,8 +80,7 @@
     <div class="box">
       <div class="columns">
         <div class="column">
-          <div>{action.triggers.join(', ') + (action.triggers.length ? ' - ' : '')} {action.actionEffect}</div>
-          <div><em>{action.extraEffects.join(', ')}</em></div>
+          <ActionDisplay {action} />
         </div>
         <div class="column">
           <button class="button is-danger" on:click={() => handleRemoveAction(action)}>Remove</button>

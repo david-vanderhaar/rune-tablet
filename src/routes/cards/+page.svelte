@@ -1,4 +1,5 @@
 <script>
+  import ActionDisplay from '../../components/ActionDisplay.svelte';
   import ActionForm from "../../components/ActionForm.svelte";
   import TagInput from "../../components/TagInput.svelte";
   import TagPicker from '../../components/TagPicker.svelte';
@@ -71,6 +72,7 @@
           <div class="control">
             <div class="select">
               <select bind:value={range}>
+                <option value={null} label="None">None</option>
                 <option value="0" label="Same (0)">0</option>
                 <option value="1" label="Adjacent (1)">1</option>
                 <option value="2">2</option>
@@ -107,9 +109,9 @@
 
       <div class="column is-half">
         <div class="card">
-          <div class="card-content">
+          <div class="card-content has-text-centered">
             <p class="title">{title}</p>
-            <div class="subtitle">
+            <div class="is-size-6 subtitle">
               <p>{itemTags.join(', ')}</p>
               {#if range}
                 <p>Range: {rangeLabelMap[range]}</p>
@@ -117,12 +119,9 @@
             </div>
             <hr />
             <div class="content">
-              {#each actions as {triggers, actionEffect, extraEffects}}
-                <div class='mb-4'>
-                  <div>{triggers.join(', ') + (triggers.length ? ' - ' : '')} {actionEffect}</div>
-                  <div><em>{extraEffects.join(', ')}</em></div>
-                </div>
-                {/each}
+              {#each actions as action}
+                <ActionDisplay {action}/>
+              {/each}
               <hr />
               <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
             </div>
@@ -132,3 +131,12 @@
     </div>
   </div>
 </section>
+
+<style>
+  .card {
+    height: 600px;
+    width: 400px;
+    border: black 11px double;
+
+  }
+</style>
