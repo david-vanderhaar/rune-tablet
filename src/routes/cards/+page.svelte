@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from 'svelte';
+  import html2canvas from 'html2canvas';
   import ActionDisplay from '../../components/ActionDisplay.svelte';
   import ActionForm from "../../components/ActionForm.svelte";
   import TagInput from "../../components/TagInput.svelte";
@@ -60,6 +62,22 @@
       extraText,
       actions,
     });
+  }
+
+  let exportContainer;
+
+  function exportComponent() {
+    html2canvas(exportContainer).then(canvas => {
+      const pngUrl = canvas.toDataURL('image/png');
+      downloadPng(pngUrl);
+    });
+  }
+
+  function downloadPng(url) {
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'rune_card.png';
+    link.click();
   }
 </script>
 
@@ -126,14 +144,12 @@
               Save Card
             </button>
           </div>
-          <div class="control">
-            <button class="button is-light">Cancel</button>
-          </div>
+          <button class="button is-secondary" on:click={exportComponent}>Export as PNG</button>
         </div>
       </div>
 
       <div class="column is-half">
-        <div class="card">
+        <div class="card" id="export-card" bind:this={exportContainer}>
           <div class="card-content has-text-centered">
             <p class="title">{title}</p>
             <div class="is-size-6 subtitle">
