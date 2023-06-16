@@ -1,6 +1,7 @@
 <script>
   export let tags = [];
   export let onTagsChange;
+  export let label = 'Tags';
 
   let newTag = '';
 
@@ -20,7 +21,7 @@
 </script>
 
 <div class="field">
-  <label class="label">Item Tags</label>
+  <label class="label">{label}</label>
   <div class="control">
     <div class="tag-input">
       <div class="field has-addons">

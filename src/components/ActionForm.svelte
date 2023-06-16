@@ -1,6 +1,7 @@
 <script>
   import ActionDisplay from "./ActionDisplay.svelte";
-import TagPicker from "./TagPicker.svelte";
+  import TagPicker from "./TagPicker.svelte";
+  import { extraEffects as extraEffectsData } from "../data/extraEffects";
   export let onAddAction = () => null;
   export let onRemoveAction = () => null;
   export let actions = [];
@@ -14,7 +15,8 @@ import TagPicker from "./TagPicker.svelte";
     '⚄', // Unicode character for dice face 5
     '⚅'  // Unicode character for dice face 6
   ];
-  const extraEffectOptions = ['Cleave', 'Unblockable', 'Piercing'];
+
+  const extraEffectOptions = Object.keys(extraEffectsData);
 
   let triggers = [];
   let actionEffect = '';
@@ -78,12 +80,12 @@ import TagPicker from "./TagPicker.svelte";
   <br>
   {#each actions as action}
     <div class="box">
-      <div class="columns">
-        <div class="column">
+      <div class="is-flex is-align-items-center">
+        <div class="is-flex-grow-1">
           <ActionDisplay {action} />
         </div>
-        <div class="column">
-          <button class="button is-danger" on:click={() => handleRemoveAction(action)}>Remove</button>
+        <div>
+          <button class="button is-danger" on:click={() => handleRemoveAction(action)}>Remove Action</button>
         </div>
       </div>
     </div>

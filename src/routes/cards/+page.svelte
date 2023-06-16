@@ -2,12 +2,13 @@
   import ActionDisplay from '../../components/ActionDisplay.svelte';
   import ActionForm from "../../components/ActionForm.svelte";
   import TagInput from "../../components/TagInput.svelte";
-  import TagPicker from '../../components/TagPicker.svelte';
+  import { extraEffects } from '../../data/extraEffects';
 
   let title = 'Item Name';
   let itemTags = ['Weapon', 'Magic']
   let range = null;
   let flavorText = '';
+  let extraText = '';
   let actions = [];
 
   function onAddAction(action) {
@@ -34,8 +35,20 @@
     rangeLabel = rangeLabelMap[range]
   }
 
+  let allUniqueExtraEffects = [];
+  function getAllUniqueExtraEffectsFromActions() {
+    let allExtraEffects = actions.reduce((acc, action) => {
+      console.log(acc, action.extraEffects);
+      return [...acc, ...action.extraEffects];
+    }, []);
+
+    allUniqueExtraEffects = [...new Set(allExtraEffects)];
+  }
+
   $: {
-    calculateRangeLabel()
+    calculateRangeLabel();
+    getAllUniqueExtraEffectsFromActions();
+    actions;
   }
 
   function saveCard() {
@@ -44,6 +57,7 @@
       title,
       range,
       flavorText,
+      extraText,
       actions,
     });
   }
@@ -85,6 +99,17 @@
         <ActionForm {onAddAction} {onRemoveAction} {actions} />
 
         <div class="field">
+          <label class="label">Extra Text</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              bind:value={extraText}
+              placeholder="Enter any extra text"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="field">
           <label class="label">Flavor Text</label>
           <div class="control">
             <textarea
@@ -123,6 +148,12 @@
                 <ActionDisplay {action}/>
               {/each}
               <hr />
+              {#each allUniqueExtraEffects as extraEffect}
+                {#if extraEffects[extraEffect]}
+                  <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
+                {/if}
+              {/each}
+              <p class="has-text-centered">{extraText}</p>
               <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
             </div>
           </div>

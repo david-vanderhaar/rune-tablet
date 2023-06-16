@@ -1,9 +1,16 @@
 <script>
+  import TagInput from "./TagInput.svelte";
+
   export let selectedTags = [];
   export let availableTags = [];
-  export let label = 'Tags';
+  export let label = "Tags";
   export let onTagsChange = () => null;
   export let tagSize = null;
+  let showEditTags = false;
+
+  function getTagSizeClass() {
+    return tagSize ? `tag-picker-size-${tagSize}` : "";
+  }
 
   function toggleTag(tag) {
     if (selectedTags.includes(tag)) {
@@ -13,24 +20,71 @@
     }
     onTagsChange(selectedTags);
   }
+
+  function removedTags(tags) { return selectedTags.filter((tag) => !tags.includes(tag)); }
+  function deselectTags(tags) { tags.forEach((tag) => toggleTag(tag)); }
+
+  function updateTags(tags) {
+    deselectTags(removedTags(tags));
+    availableTags = tags;
+  }
+
+
+  function toggleEditTags() {
+    showEditTags = !showEditTags;
+  }
+
+  function handleEnterOnToggleEdit(event) {
+    if (event.key === "Enter") {
+      toggleEditTags();
+    }
+  }
+
+  function handleEnterOnToggleTag(event) {
+    if (event.key === "Enter") {
+      toggleEditTags();
+    }
+  }
+
+  $: {
+    getTagSizeClass();
+  }
 </script>
 
 <div class="tag-picker">
+  <!-- svelte-ignore a11y-label-has-associated-control -->
   <label class="label">{label}</label>
-  <div class="tags">
-    {#each availableTags as tag}
+  {#if showEditTags}
+    <TagInput label="" onTagsChange={updateTags} tags={availableTags} />
+    <button class="button is-small is-light" on:click={toggleEditTags}>Done</button>
+  {:else}
+    <div class="tags">
+      {#each availableTags as tag}
+        <span
+          class="tag {getTagSizeClass()}"
+          class:selected={selectedTags.includes(tag)}
+          on:click={() => toggleTag(tag)}
+          on:keydown={handleEnterOnToggleTag}
+        >
+          {tag}
+        </span>
+      {/each}
       <span
-        class="tag {tagSize ? `tag-picker-size-${tagSize}` : ''}"
-        class:selected={selectedTags.includes(tag)}
-        on:click={() => toggleTag(tag)}
+        class="tag"
+        on:click={toggleEditTags}
+        on:keydown={handleEnterOnToggleEdit}
       >
-        {tag}
+        +
       </span>
-    {/each}
-  </div>
+    </div>
+  {/if}
 </div>
 
 <style>
+  .tag-picker {
+    margin-bottom: 1rem;
+  }
+
   .tags {
     display: flex;
     flex-wrap: wrap;
