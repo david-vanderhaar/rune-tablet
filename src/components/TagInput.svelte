@@ -3,6 +3,7 @@
   export let onTagsChange;
   export let label = 'Tags';
   export let placeholder = 'enter tags';
+  export let deleteable = true;
 
   let newTag = '';
 
@@ -53,7 +54,9 @@
         {#each tags as tag, index}
           <span class="tag is-primary">
             {tag}
-            <button class="delete is-small" on:click={() => removeTag(index)}></button>
+            {#if deleteable}
+              <button class="delete is-small" on:click={() => removeTag(index)}></button>
+            {/if}
           </span>
         {/each}
       </div>

@@ -3,7 +3,7 @@
   import html2canvas from 'html2canvas';
   import ActionDisplay from '../../components/ActionDisplay.svelte';
   import TagInput from "../../components/TagInput.svelte";
-  import { extraEffects } from '../../data/extraEffects';
+  import extraEffectStore from '../../data/extraEffects';
   import ActionList from '../../components/ActionList.svelte';
 
   let title = '';
@@ -44,6 +44,7 @@
     rangeLabel = rangeLabelMap[range]
   }
 
+  const extraEffects = extraEffectStore.getExtraEffects();
   let allUniqueExtraEffects = [];
   function getAllUniqueExtraEffectsFromActions() {
     let allExtraEffects = actions.reduce((acc, action) => {

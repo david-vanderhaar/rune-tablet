@@ -1,18 +1,38 @@
 <script>
   import { v4 as uuidv4 } from 'uuid';
   import TagPicker from "./TagPicker.svelte";
-  import { extraEffects as extraEffectsData } from "../data/extraEffects";
+  import extraEffectStore from "../data/extraEffects";
+  import triggerStore from "../data/triggers";
+
   export let onAddAction = () => null;
   export let onCancel = () => null;
   export let action = null
-
-  const triggerOptions = ['⚀','⚁','⚂','⚃','⚄','⚅'];
-  const extraEffectOptions = Object.keys(extraEffectsData);
 
   let triggers = action?.triggers || [];
   let actionEffect = action?.actionEffect || '';
   let extraEffects = action?.extraEffects || [];
   let id = action?.id || uuidv4();
+
+  const triggerOptions = triggerStore.get();
+
+  function handleTriggerTagsChange(updatedTags) {
+    triggers = updatedTags;
+  }
+
+  function handleUpdateTriggerOptions(updatedTags) {
+    triggerStore.addUnique(updatedTags);
+  }
+
+  const extraEffectsData = extraEffectStore.getExtraEffects();
+  const extraEffectOptions = Object.keys(extraEffectsData);
+
+  function handleExtraEffectTagsChange(updatedTags) {
+    extraEffects = updatedTags;
+  }
+  
+  function handleUpdateExtraEffectOptions(updatedTags) {
+    extraEffectStore.addUniqueExtraEffects(updatedTags);
+  }
 
   function handleAddAction(action) {
     onAddAction(action);
@@ -26,8 +46,10 @@
         label="Triggers"
         availableTags={triggerOptions}
         selectedTags={triggers}
-        onTagsChange={(updatedTags) => (triggers = updatedTags)}
+        onTagsChange={handleTriggerTagsChange}
+        onUpdateTagOptions={handleUpdateTriggerOptions}
         tagSize="large"
+        deleteable={false}
       />
 
     <div class="field">
@@ -46,7 +68,9 @@
       label='Extra Effects'
       availableTags={extraEffectOptions}
       selectedTags={extraEffects}
-      onTagsChange={(updatedTags) => (extraEffects = updatedTags)}
+      onTagsChange={handleExtraEffectTagsChange}
+      onUpdateTagOptions={handleUpdateExtraEffectOptions}
+      deleteable={false}
     />
 
     <button

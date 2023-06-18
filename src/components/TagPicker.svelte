@@ -5,7 +5,10 @@
   export let availableTags = [];
   export let label = "Tags";
   export let onTagsChange = () => null;
+  export let onUpdateTagOptions = () => null;
   export let tagSize = null;
+  export let deleteable = true;
+
   let showEditTags = false;
 
   function getTagSizeClass() {
@@ -27,6 +30,7 @@
   function updateTags(tags) {
     deselectTags(removedTags(tags));
     availableTags = tags;
+    onUpdateTagOptions(tags);
   }
 
 
@@ -55,7 +59,7 @@
   <!-- svelte-ignore a11y-label-has-associated-control -->
   <label class="label">{label}</label>
   {#if showEditTags}
-    <TagInput label="" onTagsChange={updateTags} tags={availableTags} />
+    <TagInput label="" onTagsChange={updateTags} tags={availableTags} {deleteable} />
     <button class="button is-small is-light" on:click={toggleEditTags}>Done</button>
   {:else}
     <div class="tags">
