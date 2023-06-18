@@ -1,6 +1,7 @@
 <script>
-  import TagPicker from '../../components/TagPicker.svelte';
   import html2canvas from 'html2canvas';
+  import { fade } from 'svelte/transition';
+  import TagPicker from '../../components/TagPicker.svelte';
   import ActionDisplay from '../../components/ActionDisplay.svelte';
   import TagInput from "../../components/TagInput.svelte";
   import extraEffectStore from '../../data/extraEffects';
@@ -88,7 +89,7 @@
   }
 </script>
 
-<section class="section">
+<section class="section" transition:fade>
   <div class="container">
     <div class="columns">
       <div class="column is-half">
@@ -114,7 +115,7 @@
         />
 
         <ActionList {actions} {onAddAction} {onRemoveAction} {onEditAction} /> 
-
+        <br>
         <div class="field">
           <label class="label">Extra Text</label>
           <div class="control">
@@ -135,15 +136,6 @@
               placeholder="Enter flavor text"
             ></textarea>
           </div>
-        </div>
-
-        <div class="field is-grouped">
-          <div class="control">
-            <button class="button is-primary" on:click={saveCard}>
-              Save Card
-            </button>
-          </div>
-          <button class="button is-secondary" on:click={exportComponent}>Export as PNG</button>
         </div>
       </div>
 
@@ -173,6 +165,15 @@
             </div>
           </div>
         </div>
+        <br>
+        <div class="field is-grouped">
+          <!-- <div class="control">
+            <button class="button is-primary" on:click={saveCard}>
+              Save Card
+            </button>
+          </div> -->
+          <button class="button is-dark" on:click={exportComponent}>Export as PNG</button>
+        </div>
       </div>
     </div>
   </div>
@@ -183,6 +184,5 @@
     height: 600px;
     width: 400px;
     border: black 11px double;
-
   }
 </style>
