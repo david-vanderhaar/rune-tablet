@@ -1,14 +1,14 @@
 <script>
-  import { onMount } from 'svelte';
+  import TagPicker from '../../components/TagPicker.svelte';
   import html2canvas from 'html2canvas';
   import ActionDisplay from '../../components/ActionDisplay.svelte';
-  import ActionForm from "../../components/ActionForm.svelte";
   import TagInput from "../../components/TagInput.svelte";
   import { extraEffects } from '../../data/extraEffects';
+  import ActionList from '../../components/ActionList.svelte';
 
-  let title = 'Item Name';
-  let itemTags = ['Weapon', 'Magic']
-  let range = null;
+  let title = '';
+  let itemTags = [];
+  let range = [];
   let flavorText = '';
   let extraText = '';
   let actions = [];
@@ -17,8 +17,15 @@
     actions = [...actions, action];
   }
 
+  function onEditAction(newAction) {
+    actions = actions.map(action => {
+      if (action.id === newAction.id) return newAction;
+      return action;
+    });
+  }
+
   function onRemoveAction(action) {
-    actions = actions.filter((a) => a !== action);
+    actions = actions.filter(a => a.id !== action.id);
   }
 
   function handleTagsChange(updatedTags) {
@@ -40,7 +47,6 @@
   let allUniqueExtraEffects = [];
   function getAllUniqueExtraEffectsFromActions() {
     let allExtraEffects = actions.reduce((acc, action) => {
-      console.log(acc, action.extraEffects);
       return [...acc, ...action.extraEffects];
     }, []);
 
@@ -92,29 +98,21 @@
               class="input"
               type="text"
               bind:value={title}
-              placeholder="Enter title"
+              placeholder="Card Title"
             />
           </div>
         </div>
 
-        <TagInput tags={itemTags} onTagsChange={handleTagsChange} />
+        <TagInput placeholder='Axe' tags={itemTags} onTagsChange={handleTagsChange} />
 
-        <div class="field">
-          <label class="label">Range</label>
-          <div class="control">
-            <div class="select">
-              <select bind:value={range}>
-                <option value={null} label="None">None</option>
-                <option value="0" label="Same (0)">0</option>
-                <option value="1" label="Adjacent (1)">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </div>
-          </div>
-        </div>
+        <TagPicker
+          label='Range'
+          availableTags={Object.values(rangeLabelMap)}
+          selectedTags={range}
+          onTagsChange={(updatedTags) => (range = updatedTags)}
+        />
 
-        <ActionForm {onAddAction} {onRemoveAction} {actions} />
+        <ActionList {actions} {onAddAction} {onRemoveAction} {onEditAction} /> 
 
         <div class="field">
           <label class="label">Extra Text</label>
@@ -154,13 +152,13 @@
             <p class="title">{title}</p>
             <div class="is-size-6 subtitle">
               <p>{itemTags.join(', ')}</p>
-              {#if range}
-                <p>Range: {rangeLabelMap[range]}</p>
+              {#if range.length > 0}
+                <p>Range: {range.join(', ')}</p>
               {/if}
             </div>
             <hr />
             <div class="content">
-              {#each actions as action}
+              {#each actions as action (action)}
                 <ActionDisplay {action}/>
               {/each}
               <hr />

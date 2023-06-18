@@ -2,6 +2,7 @@
   export let tags = [];
   export let onTagsChange;
   export let label = 'Tags';
+  export let placeholder = 'enter tags';
 
   let newTag = '';
 
@@ -29,7 +30,7 @@
           <input
             class="input"
             type="text"
-            placeholder="Enter tag"
+            placeholder={placeholder}
             bind:value={newTag}
             on:keydown={(event) => {
               if (event.key === 'Enter') {
