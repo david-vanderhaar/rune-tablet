@@ -1,7 +1,14 @@
 <script>
   import { fade } from 'svelte/transition';
+  import { base } from "$app/paths";
+
 </script>
-<div transition:fade>
-  <h1>About</h1>
-  <p>a blurb</p>
+<div transition:fade class='container'>
+  <p>This is a set of tools to help creators to enjoy and develop third-party content for RUNE, <a href="https://gilarpgs.itch.io/rune">a solo tabletop RPG inspired by the soulslike genre of video games</a>.</p>
+  <p><a href="{base}/cards">Create custom gear</a> cards and export them as PNGs.</p>
+
+  <br>
+  <br>
+  <p class="is-italic">RUNE is created by <a href="https://gilarpgs.com/">GILA RPGs</a></p>
+  <p class="is-italic">I do not own the rights to this game or its contents. I did not create RUNE, simply inspired by it.</p>
 </div>
