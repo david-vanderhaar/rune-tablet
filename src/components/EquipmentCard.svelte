@@ -87,4 +87,8 @@
     padding: 0 1.5rem 1.5rem 1.5rem;
     width: 100%;
   }
+
+  .card-content {
+    height: 100%;
+  }
 </style>

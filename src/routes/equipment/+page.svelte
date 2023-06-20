@@ -5,7 +5,7 @@
   import TagInput from "../../components/TagInput.svelte";
   import ActionList from '../../components/ActionList.svelte';
   import EquipmentCard from '../../components/EquipmentCard.svelte';
-  import templateCards from '../../data/gear.js';
+  import EquipmentTemplates from '../../components/EquipmentTemplates.svelte';
 
   const titleDefault = '';
   const itemTagsDefault = [];
@@ -20,6 +20,15 @@
   let flavorText = flavorTextDefault;
   let extraText = extraTextDefault;
   let actions = actionsDefault;
+
+  function handleSelectEquipmentTemplate(templateCard) {
+    title = templateCard?.title || titleDefault;
+    itemTags = templateCard?.itemTags || itemTagsDefault;
+    range = templateCard?.range || rangeDefault;
+    flavorText = templateCard?.flavorText || flavorTextDefault;
+    extraText = templateCard?.extraText || extraTextDefault;
+    actions = templateCard?.actions || actionsDefault;
+  }
 
   function onAddAction(action) {
     actions = [...actions, action];
@@ -90,34 +99,6 @@
   <div class="container">
     <div class="columns">
       <div class="column is-half">
-        <div class="dropdown is-hoverable mb-2">
-          <div class="dropdown-trigger">
-            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-              <span class='mr-1'>Templates</span>
-              <iconify-icon icon="mi:chevron-down"></iconify-icon>
-            </button>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu" role="menu">
-            <div class="dropdown-content">
-              {#each templateCards as templateCard}
-                <div class="dropdown-item">
-                  <button class='is-flex is-justify-content-space-between button is-fullwidth is-dark' on:click={() => {
-                    title = templateCard?.title || titleDefault;
-                    itemTags = templateCard?.itemTags || itemTagsDefault;
-                    range = templateCard?.range || rangeDefault;
-                    flavorText = templateCard?.flavorText || flavorTextDefault;
-                    extraText = templateCard?.extraText || extraTextDefault;
-                    actions = templateCard?.actions || actionsDefault;
-                  }}>
-                    {templateCard.title}
-                    <iconify-icon icon="mi:plus"></iconify-icon>
-                  </button>
-                </div>
-                <!-- <hr class="dropdown-divider"> -->
-                {/each}
-            </div>
-          </div>
-        </div>
         <div>
           <!-- form -->
           <div class="field">
@@ -168,34 +149,9 @@
       </div>
 
       <div class="column is-half">
-        <div style="width: 400px; height: 600px;" id="export-card" bind:this={exportContainer}>
+        <div style="width: 400px; height: 600px; max-width: 100%;" id="export-card" bind:this={exportContainer}>
           <EquipmentCard {title} {itemTags} {range} {flavorText} {extraText} {actions} />
         </div>
-        <!-- <div class="card equipment-card" id="export-card" bind:this={exportContainer}>
-          <div class="card-content has-text-centered">
-            <p class="title">{title}</p>
-            <div class="is-size-6 subtitle">
-              <p>{itemTags.join(', ')}</p>
-              {#if range.length > 0}
-                <p>Range: {range.join(', ')}</p>
-              {/if}
-            </div>
-            <hr />
-            <div class="content">
-              {#each actions as action (action)}
-                <ActionDisplay {action}/>
-              {/each}
-              <hr />
-              {#each allUniqueExtraEffects as extraEffect}
-                {#if extraEffects[extraEffect]}
-                  <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
-                {/if}
-              {/each}
-              <p class="has-text-centered">{extraText}</p>
-              <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
-            </div>
-          </div>
-        </div> -->
         <br>
         <div class="field is-grouped">
           <!-- <div class="control">
@@ -203,7 +159,8 @@
               Save Card
             </button>
           </div> -->
-          <button class="button is-dark" on:click={exportComponent}>Export as PNG</button>
+          <EquipmentTemplates onSelect={handleSelectEquipmentTemplate} />
+          <button class="button is-dark ml-2" on:click={exportComponent}>Export as PNG</button>
         </div>
       </div>
     </div>

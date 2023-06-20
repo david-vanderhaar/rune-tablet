@@ -52,7 +52,7 @@
       </div>
       <div class="tags">
         {#each tags as tag, index}
-          <span class="tag is-primary">
+          <span class="tag is-secondary">
             {tag}
             {#if deleteable}
               <button class="delete is-small" on:click={() => removeTag(index)}></button>
