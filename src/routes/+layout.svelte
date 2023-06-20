@@ -27,7 +27,7 @@
     </div>
   </div>
 </nav>
-<main class="section pt-0 transition-container"><slot></slot></main>
+<main class="section pt-0"><slot></slot></main>
 
 <style>
   /* smooth route transitions */
@@ -56,5 +56,11 @@
   main > :global(*) {
     grid-row: 1;
     grid-column: 1;
+  }
+
+  @media (max-width: 400px) {
+    main {
+      display: block;
+    }
   }
 </style>
