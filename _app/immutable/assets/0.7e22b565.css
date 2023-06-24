@@ -1,0 +1,1 @@
+nav.svelte-klxicg{grid-area:nav}main.svelte-klxicg{grid-area:main;display:grid;grid-template-rows:1fr;grid-template-columns:1fr}main.svelte-klxicg>*{grid-row:1;grid-column:1}@media (max-width: 400px){main.svelte-klxicg{display:block}}main.svelte-klxicg{overscroll-behavior:none;touch-action:none}
