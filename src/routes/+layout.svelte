@@ -64,4 +64,9 @@
       display: block;
     }
   }
+
+  #app {
+    overscroll-behavior: none;
+    touch-action: none;
+  }
 </style>
