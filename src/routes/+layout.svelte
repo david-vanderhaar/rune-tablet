@@ -65,7 +65,7 @@
     }
   }
 
-  #app {
+  main, #app {
     overscroll-behavior: none;
     touch-action: none;
   }
