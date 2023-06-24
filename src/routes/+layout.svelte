@@ -20,6 +20,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu {mobileMenuOpen ? 'is-active' : ''}">
     <div class="navbar-start">
+      <a class="navbar-item" href="{base}/play">Play</a>
       <a class="navbar-item" href="{base}/equipment">Equipment</a>
       <!-- <a class="navbar-item" href="{base}/character">Character</a> -->
       <!-- <a class="navbar-item" href="{base}/scenarios">Scenarios</a> -->
