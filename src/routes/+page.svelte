@@ -5,6 +5,7 @@
 </script>
 <div transition:fade class='container'>
   <p>This is a set of tools to help creators enjoy and develop third-party content for RUNE, <a target="_blank" href="https://gilarpgs.itch.io/rune">"a solo tabletop RPG inspired by the soulslike genre of video games"</a>.</p>
+  <br>
   <p><a href="{base}/equipment">Create custom equipment</a> cards and export them as PNGs.</p>
 
   <br>
