@@ -9,16 +9,26 @@
   let visibility = 'hidden';
 	let moving = false;
   let position = 'initial';
-	
-	function onMouseDown(e) {
-    e.preventDefault();
+
+  function centerOnPointer(event) {
     const draggable = document.getElementById(id);
-    left = e.clientX - draggable.getBoundingClientRect().width / 2;
-    top = e.clientY - draggable.getBoundingClientRect().height / 2;
+    left = event.clientX - draggable.getBoundingClientRect().width / 4;
+    top = event.clientY - draggable.getBoundingClientRect().height / 4;
+  }
+
+  function isMobile() {
+    return window.innerWidth < 768;
+  }
+
+	function handlePointerDown(e) {
+    e.preventDefault();
 		moving = true;
+
+    if (isMobile()) return
+    centerOnPointer(e);
 	}
 	
-	function onMouseMove(e) {
+	function handleWindowPointerMove(e) {
     e.preventDefault();
 		if (moving) {
 			left += e.movementX;
@@ -30,7 +40,7 @@
 
 	}
 	
-	function onMouseUp(e) {
+	function handleWindowPointerUp(e) {
     e.preventDefault();
 		moving = false;
 	}
@@ -57,17 +67,22 @@
 	.draggable {
 		user-select: none;
 		cursor: move;
+    overscroll-behavior: none;
+    touch-action: none;
 	}
 </style>
 
 <section 
-  draggable="false"
-  on:pointerdown={onMouseDown}
   style="left: {left}px; top: {top}px; visibility: {visibility}; position: {position};"
+  on:pointerdown={handlePointerDown}
+  draggable="false"
   class="draggable"
   {id}
 >
-	<slot></slot>
+  <slot></slot>
 </section>
 
-<svelte:window on:pointerup={onMouseUp} on:pointermove={onMouseMove} />
+<svelte:window 
+  on:pointerup={handleWindowPointerUp}
+  on:pointermove={handleWindowPointerMove}
+/>

@@ -9,30 +9,40 @@
   // import DwarfSvg from "../../assets/dwarf-helmet_1.svg";
   import CrownedSkull from '../../assets/crowned-skull.svg';
   import OverlordHelm from '../../assets/overlord-helm.svg';
+    import EnemyDraggable from "../../components/EnemyDraggable.svelte";
   // import SpikyPit from '../../assets/spiky-pit.svg';
   // import StoneWall from '../../assets/stone-wall.svg';
 </script>
 
-<div>
+<div id="play-page">
   <div class="columns">
-    <div class="column">
+    <div class="column" id="grid-container">
       <Grid />
     </div>
     <div class="column">
       <DraggableBank>
-        <Draggable><img src={ElfHelmet} style="min-width: 50px; min-height: 50px; background-color: #77b7ec; border-radius: 10px;" /></Draggable>
-        <Draggable><img src={Cultist} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={Cultist} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={Cultist} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={OrcHead} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={OrcHead} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={OrcHead} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={CrownedSkull} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={OverlordHelm} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={WoodenCrate} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={WoodenCrate} style="min-width: 50px; min-height: 50px" /></Draggable>
-        <Draggable><img src={WoodenCrate} style="min-width: 50px; min-height: 50px" /></Draggable>
+        <EnemyDraggable iconImageSrc={ElfHelmet} backgroundColor="#77b7ec" />
+        <EnemyDraggable iconImageSrc={Cultist} backgroundColor="green" />
+        <EnemyDraggable iconImageSrc={Cultist} />
+        <EnemyDraggable iconImageSrc={Cultist} />
+        <EnemyDraggable iconImageSrc={Cultist} />
+        <EnemyDraggable iconImageSrc={OrcHead} />
+        <EnemyDraggable iconImageSrc={OrcHead} />
+        <EnemyDraggable iconImageSrc={OrcHead} />
+        <EnemyDraggable iconImageSrc={CrownedSkull} />
+        <EnemyDraggable iconImageSrc={OverlordHelm} />
+        <EnemyDraggable iconImageSrc={WoodenCrate} />
+        <EnemyDraggable iconImageSrc={WoodenCrate} />
+        <EnemyDraggable iconImageSrc={WoodenCrate} />
       </DraggableBank>
     </div>  
   </div>
 </div>
+
+<style>
+  /* #grid-container { */
+  /* #play-page {
+    overscroll-behavior: none;
+    touch-action: none;
+  } */
+</style>
