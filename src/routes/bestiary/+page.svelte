@@ -4,10 +4,12 @@
   import TagPicker from '../../components/TagPicker.svelte';
   import TagInput from "../../components/TagInput.svelte";
   import ActionList from '../../components/ActionList.svelte';
-  import EquipmentCard from '../../components/EquipmentCard.svelte';
+  import BeastiaryCard from '../../components/BeastiaryCard.svelte';
   import EquipmentTemplates from '../../components/EquipmentTemplates.svelte';
 
   const titleDefault = '';
+  const healthDefault = '';
+  const staminaDefault = '';
   const itemTagsDefault = [];
   const rangeDefault = [];
   const flavorTextDefault = '';
@@ -15,6 +17,8 @@
   const actionsDefault = [];
 
   let title = titleDefault;
+  let health = healthDefault;
+  let stamina = staminaDefault;
   let itemTags = itemTagsDefault;
   let range = rangeDefault;
   let flavorText = flavorTextDefault;
@@ -23,6 +27,8 @@
 
   function handleSelectEquipmentTemplate(templateCard) {
     title = templateCard?.title || titleDefault;
+    health = templateCard?.health || healthDefault;
+    stamina = templateCard?.stamina || staminaDefault;
     itemTags = templateCard?.itemTags || itemTagsDefault;
     range = templateCard?.range || rangeDefault;
     flavorText = templateCard?.flavorText || flavorTextDefault;
@@ -70,6 +76,9 @@
     // Implement your logic to save the card data here
     console.log({
       title,
+      health,
+      stamina,
+      itemTags,
       range,
       flavorText,
       extraText,
@@ -102,18 +111,38 @@
         <div>
           <!-- form -->
           <div class="field">
-            <label class="label">Title</label>
+            <label class="label">Name</label>
             <div class="control">
               <input
                 class="input"
                 type="text"
                 bind:value={title}
-                placeholder="Card Title"
+                placeholder="Name"
               />
             </div>
           </div>
 
-          <TagInput placeholder='Axe' tags={itemTags} onTagsChange={handleTagsChange} />
+          <div class="field">
+            <label class="label">Health</label>
+            <div class="control">
+              <input
+                class="input"
+                bind:value={health}
+                placeholder="Health"
+              />
+            </div>
+
+            <label class="label">Stamina</label>
+            <div class="control">
+              <input
+                class="input"
+                bind:value={stamina}
+                placeholder="Stamina"
+              />
+            </div>
+          </div>
+
+          <TagInput placeholder='Undead' tags={itemTags} onTagsChange={handleTagsChange} />
 
           <TagPicker
             label='Range'
@@ -150,7 +179,7 @@
 
       <div class="column is-half">
         <div style="width: 400px; height: 600px; max-width: 100%;" id="export-card" bind:this={exportContainer}>
-          <EquipmentCard {title} {itemTags} {range} {flavorText} {extraText} {actions} />
+          <BeastiaryCard {title} {itemTags} {range} {flavorText} {extraText} {actions} {health} {stamina} />
         </div>
         <br>
         <div class="field is-grouped">
