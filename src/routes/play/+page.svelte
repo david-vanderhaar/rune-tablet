@@ -22,7 +22,6 @@
     <div class="column">
       <DraggableBank>
         <EnemyDraggable iconImageSrc={ElfHelmet} backgroundColor="#77b7ec" />
-        <EnemyDraggable iconImageSrc={Cultist} backgroundColor="green" />
         <EnemyDraggable iconImageSrc={Cultist} />
         <EnemyDraggable iconImageSrc={Cultist} />
         <EnemyDraggable iconImageSrc={Cultist} />

@@ -22,6 +22,7 @@
     <div class="navbar-start">
       <a class="navbar-item" href="{base}/play">Play</a>
       <a class="navbar-item" href="{base}/equipment">Equipment</a>
+      <a class="navbar-item" href="{base}/bestiary">Bestiary</a>
       <!-- <a class="navbar-item" href="{base}/character">Character</a> -->
       <!-- <a class="navbar-item" href="{base}/scenarios">Scenarios</a> -->
       <a class="navbar-item" href="{base}/">About</a>
