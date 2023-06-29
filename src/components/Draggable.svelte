@@ -24,8 +24,7 @@
     e.preventDefault();
 		moving = true;
 
-    if (isMobile()) return
-    centerOnPointer(e);
+    if (position === 'initial') centerOnPointer(e);
 	}
 	
 	function handleWindowPointerMove(e) {
@@ -33,9 +32,7 @@
 		if (moving) {
 			left += e.movementX;
 			top += e.movementY;
-      if (position === 'initial') {
-        position = 'absolute';
-      }
+      if (position === 'initial') position = 'absolute';
 		}
 
 	}

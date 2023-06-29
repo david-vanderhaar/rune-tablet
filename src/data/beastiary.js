@@ -32,6 +32,7 @@ export default [
     title: 'Rat King',
     health: '3',
     range: ['Same', 'Adjacent'],
+    itemTags: [],
     flavorText: 'Who needs friends when you have rats that can cook?',
     extraText: 'Special: Deals +1 Harm for every adjacent Skelerat.',
     actions: [

@@ -23,8 +23,8 @@
 
   function getHealthAndStamina (health, stamina) {
     const result = [];
-    if (health.length > 0) result.push(`Health: ${health}`);
-    if (stamina.length > 0) result.push(`Stamina: ${stamina}`);
+    if (health && health.length > 0) result.push(`Health: ${health}`);
+    if (stamina && stamina.length > 0) result.push(`Stamina: ${stamina}`);
     return result.join(', ');
   };
 
@@ -42,8 +42,8 @@
       <p class="title">{title}</p>
       <div class="is-size-6 has-text-left">
         <p>{getHealthAndStamina(health, stamina)}</p>
-        <p>{itemTags.join(', ')}</p>
-        {#if range.length > 0}
+        <p>{itemTags && itemTags.join(', ')}</p>
+        {#if range && range.length > 0}
           <p>Range: {range.join(', ')}</p>
         {/if}
       </div>
