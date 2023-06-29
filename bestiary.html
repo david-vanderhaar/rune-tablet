@@ -7,7 +7,7 @@
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     
 		<link href="./_app/immutable/assets/0.37e8adb5.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/5.9abd6703.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/3.e05e33fa.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/CardTemplateSelector.7a850400.css" rel="stylesheet">
 		<link rel="modulepreload" href="./_app/immutable/entry/start.f903e5a1.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.5a21e692.js">
@@ -15,7 +15,7 @@
 		<link rel="modulepreload" href="./_app/immutable/chunks/paths.14cd22df.js">
 		<link rel="modulepreload" href="./_app/immutable/entry/app.276b39b3.js">
 		<link rel="modulepreload" href="./_app/immutable/nodes/0.bb026c2b.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/5.b62d950e.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/3.e23ec3de.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/CardTemplateSelector.e809f6f6.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/v4.a960c1f4.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.bdac4a1c.js">
@@ -37,12 +37,18 @@
       
       
       <a class="navbar-item" href="/rune-tablet/">About</a></div></div></nav>
-<main class="section pt-0 svelte-qfzoi3"><section><div class="container"><div class="columns"><div class="column is-half"><div>
-          <div class="field"><label class="label">Title</label>
-            <div class="control"><input class="input" type="text" placeholder="Card Title" value=""></div></div>
+<main class="section pt-0 svelte-qfzoi3"><section><div class="container"><div class="columns is-flex-wrap-wrap-reverse"><div class="column is-half"><div>
+          <div class="field"><label class="label">Name</label>
+            <div class="control"><input class="input" type="text" placeholder="Name" value=""></div></div>
+
+          <div class="field"><label class="label">Health</label>
+            <div class="control"><input class="input" placeholder="3" value=""></div></div>
+
+          <div class="field"><label class="label">Stamina</label>
+            <div class="control"><input class="input" placeholder="1" value=""></div></div>
 
           <div class="field"><label class="label">Tags</label>
-  <div class="control"><div class="tag-input"><div class="field has-addons"><div class="control"><input class="input" type="text" placeholder="Axe" value=""></div>
+  <div class="control"><div class="tag-input"><div class="field has-addons"><div class="control"><input class="input" type="text" placeholder="Undead" value=""></div>
         <div class="control"><button class="button is-primary" disabled>Add Tag
           </button></div></div>
       <div class="tags svelte-1m7c7ig"></div></div></div>
@@ -70,33 +76,27 @@
           <div class="field"><label class="label">Flavor Text</label>
             <div class="control"><textarea class="textarea" placeholder="Enter flavor text"></textarea></div></div></div></div>
 
-      <div class="column is-half"><div style="width: 400px; height: 600px; max-width: 100%;" id="export-card"><div class="card equipment-card svelte-gmcenr"><div class="card-content has-text-centered pb-0 svelte-gmcenr" style="background-color: white;"><p class="title"></p>
-    <div class="is-size-6 subtitle"><p></p>
-      </div>
+      <div class="column"><div style="width: 600px; height: 400px; max-height: 100%;" id="export-card"><div class="card display-card svelte-1d4zbmt"><div class="card-content pb-0" style="background-color: white;"><div class="is-flex is-justify-content-space-between"><p class="title"></p>
+      <div class="is-size-6 has-text-left"><p></p>
+        <p></p>
+        </div></div>
     <hr>
-    <div class="content">
-      <div class="bottom-content svelte-gmcenr" style="background-color: white;"><hr>
-        
-        <p class="has-text-centered"></p>
-        <p class="has-text-grey is-italic has-text-centered"></p></div></div></div>
+    <div class="content"><div class="is-flex is-justify-content-space-around"></div>
+      <div class="bottom-content svelte-1d4zbmt" style="background-color: white;"><hr>
+        <div class="is-flex is-justify-content-space-around"><div></div>
+          <div><p class="has-text-centered"></p></div>
+          <div><p class="has-text-grey is-italic has-text-centered"></p></div></div></div></div></div>
 </div></div>
         <br>
         <div class="field is-grouped">
           <div class="dropdown is-up is-hoverable mb-2"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span class="mr-1">Templates</span>
       <iconify-icon icon="mi:chevron-down"></iconify-icon></button></div>
-  <div class="dropdown-menu" id="dropdown-menu" role="menu"><div class="dropdown-content"><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Long Sword
+  <div class="dropdown-menu" id="dropdown-menu" role="menu"><div class="dropdown-content"><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Skelerat
             <iconify-icon icon="mi:plus"></iconify-icon></button>
-        </div><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Boarded Shield
-            <iconify-icon icon="mi:plus"></iconify-icon></button>
-        </div><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Erupting Flame
-            <iconify-icon icon="mi:plus"></iconify-icon></button>
-        </div><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Amulet of Dawn
-            <iconify-icon icon="mi:plus"></iconify-icon></button>
-        </div><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Fate's Fury
+        </div><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Rat King
             <iconify-icon icon="mi:plus"></iconify-icon></button>
         </div></div></div></div>
-          <button class="button is-dark ml-2">Export as PNG</button></div></div></div></div>
-</section></main>
+          <button class="button is-dark ml-2">Export as PNG</button></div></div></div></div></section></main>
 
 
 			
@@ -117,7 +117,7 @@
 						import("./_app/immutable/entry/app.276b39b3.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 5],
+							node_ids: [0, 3],
 							data,
 							form: null,
 							error: null
