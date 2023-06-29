@@ -5,7 +5,8 @@
   import TagInput from "../../components/TagInput.svelte";
   import ActionList from '../../components/ActionList.svelte';
   import EquipmentCard from '../../components/EquipmentCard.svelte';
-  import EquipmentTemplates from '../../components/EquipmentTemplates.svelte';
+  import CardTemplateSelector from '../../components/CardTemplateSelector.svelte';
+  import gearTemplateCards from '../../data/gear';
 
   const titleDefault = '';
   const itemTagsDefault = [];
@@ -159,7 +160,7 @@
               Save Card
             </button>
           </div> -->
-          <EquipmentTemplates onSelect={handleSelectEquipmentTemplate} />
+          <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={gearTemplateCards} />
           <button class="button is-dark ml-2" on:click={exportComponent}>Export as PNG</button>
         </div>
       </div>

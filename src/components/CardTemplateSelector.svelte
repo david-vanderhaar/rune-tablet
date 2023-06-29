@@ -1,6 +1,5 @@
 <script>
-  import templateCards from '../data/gear';
-
+  export let templateCards = []
   export let onSelect;
 </script>
 

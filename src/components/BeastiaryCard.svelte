@@ -21,49 +21,64 @@
     allUniqueExtraEffects = [...new Set(allExtraEffects)];
   }
 
+  function getHealthAndStamina (health, stamina) {
+    const result = [];
+    if (health.length > 0) result.push(`Health: ${health}`);
+    if (stamina.length > 0) result.push(`Stamina: ${stamina}`);
+    return result.join(', ');
+  };
+
   $: {
     getAllUniqueExtraEffectsFromActions();
     actions;
   }
 
+
 </script>
 
-<div class="card equipment-card">
-  <div class="card-content has-text-centered pb-0" style="background-color: white;">
-    <p class="title">{title}</p>
-    <div class="is-size-6 subtitle">
-      {#if health.length > 0}
-        <p>Health: {health}</p>
-      {/if}
-      {#if stamina.length > 0}
-        <p>Stamina: {stamina}</p>
-      {/if}
-      <p>{itemTags.join(', ')}</p>
-      {#if range.length > 0}
-        <p>Range: {range.join(', ')}</p>
-      {/if}
+<div class="card display-card">
+  <div class="card-content pb-0" style="background-color: white;">
+    <div class="is-flex is-justify-content-space-between">
+      <p class="title">{title}</p>
+      <div class="is-size-6 has-text-left">
+        <p>{getHealthAndStamina(health, stamina)}</p>
+        <p>{itemTags.join(', ')}</p>
+        {#if range.length > 0}
+          <p>Range: {range.join(', ')}</p>
+        {/if}
+      </div>
     </div>
     <hr />
     <div class="content">
-      {#each actions as action (action)}
-        <ActionDisplay {action}/>
-      {/each}
+      <div class="is-flex is-justify-content-space-around">
+        {#each actions as action (action)}
+          <ActionDisplay {action} stacked/>
+        {/each}
+      </div>
       <div class="bottom-content" style="background-color: white;">
         <hr />
-        {#each allUniqueExtraEffects as extraEffect}
-          {#if extraEffects[extraEffect]}
-            <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
-          {/if}
-        {/each}
-        <p class="has-text-centered">{extraText}</p>
-        <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
+        <div class="is-flex is-justify-content-space-around">
+          <div>
+            {#each allUniqueExtraEffects as extraEffect}
+              {#if extraEffects[extraEffect]}
+                <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
+              {/if}
+            {/each}
+          </div>
+          <div>
+            <p class="has-text-centered">{extraText}</p>
+          </div>
+          <div>
+            <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  .equipment-card {
+  .display-card {
     height: 100%;
     width: 100%;
     border: black 11px double;
@@ -75,9 +90,5 @@
     left: 0;
     padding: 0 1.5rem 1.5rem 1.5rem;
     width: 100%;
-  }
-
-  .card-content {
-    height: 100%;
   }
 </style>

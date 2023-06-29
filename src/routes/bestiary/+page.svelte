@@ -5,7 +5,8 @@
   import TagInput from "../../components/TagInput.svelte";
   import ActionList from '../../components/ActionList.svelte';
   import BeastiaryCard from '../../components/BeastiaryCard.svelte';
-  import EquipmentTemplates from '../../components/EquipmentTemplates.svelte';
+  import CardTemplateSelector from '../../components/CardTemplateSelector.svelte';
+  import templateCards from '../../data/beastiary';
 
   const titleDefault = '';
   const healthDefault = '';
@@ -106,7 +107,7 @@
 
 <section transition:fade>
   <div class="container">
-    <div class="columns">
+    <div class="columns is-flex-wrap-wrap-reverse">
       <div class="column is-half">
         <div>
           <!-- form -->
@@ -128,16 +129,18 @@
               <input
                 class="input"
                 bind:value={health}
-                placeholder="Health"
+                placeholder="3"
               />
             </div>
+          </div>
 
+          <div class="field">
             <label class="label">Stamina</label>
             <div class="control">
               <input
                 class="input"
                 bind:value={stamina}
-                placeholder="Stamina"
+                placeholder="1"
               />
             </div>
           </div>
@@ -177,8 +180,8 @@
         </div>
       </div>
 
-      <div class="column is-half">
-        <div style="width: 400px; height: 600px; max-width: 100%;" id="export-card" bind:this={exportContainer}>
+      <div class="column">
+        <div style="width: 600px; height: 400px; max-height: 100%;" id="export-card" bind:this={exportContainer}>
           <BeastiaryCard {title} {itemTags} {range} {flavorText} {extraText} {actions} {health} {stamina} />
         </div>
         <br>
@@ -188,20 +191,10 @@
               Save Card
             </button>
           </div> -->
-          <EquipmentTemplates onSelect={handleSelectEquipmentTemplate} />
+          <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={templateCards} />
           <button class="button is-dark ml-2" on:click={exportComponent}>Export as PNG</button>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<style>
-  .template-card {
-    /* transform: scale(0.3);
-    width: 400px;
-    height: 600px; */
-    width: 100px;
-    height: 150px;
-  }
-</style>
