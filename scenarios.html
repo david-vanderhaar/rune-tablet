@@ -6,39 +6,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     
-		<link href="./_app/immutable/assets/0.37e8adb5.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.0336f28f.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.c88aa12a.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index.bb4c9b91.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.e8e8fecf.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.f4a19773.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.4d29d362.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.9e5b857e.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/7.959a12b5.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.7ce8b90f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.affbd470.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.ab69727d.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.22b85b1f.js">
   </head>
   <body>
     <div>
-
-
-<nav class="navbar section pb-2 pt-4 svelte-qfzoi3" role="navigation" aria-label="main navigation"><div class="navbar-brand"><a class="navbar-item p-0 pr-2" href="/rune-tablet/"><p class="menu-label">RUNE Tablet</p></a>
-
-    
-    <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span></a></div>
-
-  <div id="navbarBasicExample" class="navbar-menu "><div class="navbar-start"><a class="navbar-item" href="/rune-tablet/play">Play</a>
-      <a class="navbar-item" href="/rune-tablet/equipment">Equipment</a>
-      <a class="navbar-item" href="/rune-tablet/bestiary">Bestiary</a>
-      
-      
-      <a class="navbar-item" href="/rune-tablet/">About</a></div></div></nav>
-<main class="section pt-0 svelte-qfzoi3"><h1>Scenario</h1></main>
-
-
-			
 			<script>
 				{
-					__sveltekit_8lr4q8 = {
+					__sveltekit_1t81faz = {
 						assets: "/rune-tablet",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
@@ -46,18 +25,11 @@
 
 					const element = document.currentScript.parentElement;
 
-					const data = [null,null];
-
 					Promise.all([
-						import("./_app/immutable/entry/start.0336f28f.js"),
-						import("./_app/immutable/entry/app.4d29d362.js")
+						import("./_app/immutable/entry/start.c88aa12a.js"),
+						import("./_app/immutable/entry/app.22b85b1f.js")
 					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 7],
-							data,
-							form: null,
-							error: null
-						});
+						kit.start(app, element);
 					});
 				}
 			</script>
