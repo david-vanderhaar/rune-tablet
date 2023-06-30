@@ -14,16 +14,23 @@
   // import StoneWall from '../../assets/stone-wall.svg';
   import EnemyDraggable from "../../components/EnemyDraggable.svelte";
   import CardTemplateSelectorFullWidth from "../../components/CardTemplateSelectorFullWidth.svelte";
-  import beastiary from "../../data/beastiary";
+  import beastiaryStore from "../../data/beastiary";
   import gearStore from "../../data/gear";
   import EquipmentCard from "../../components/EquipmentCard.svelte";
+  import Resizable from "../../components/Resizable.svelte";
+  import Dice from "../../components/Dice.svelte";
 
   let pinnedCards = [];
   function onTemplateSelect(templateCard) {
     pinnedCards = [templateCard, ...pinnedCards].slice(0, 2);
   }
 
-  $: templateCards = [...beastiary, ...$gearStore];
+  let dice = [1, 1]
+  function addDie() {
+    dice = [...dice, 1];
+  }
+
+  $: templateCards = [...$beastiaryStore, ...$gearStore];
 </script>
 
 <div id="play-page">
@@ -48,12 +55,25 @@
       </DraggableBank>
 
       <br>
+      <div class="is-flex is-align-items-center" style="height: 40px;">
+        {#each dice as die}
+          <Dice />
+        {/each}
+        <button class="button is-dark ml-3 mt-2" style="height: 35px; width: 35px;" on:click={addDie}>
+          <iconify-icon icon="mi:add"></iconify-icon>
+        </button>
+      </div>
+      <br>
       <CardTemplateSelectorFullWidth label={"pin template cards"} {templateCards} onSelect={onTemplateSelect} />
       <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-start">
         {#each pinnedCards as pinnedCard (pinnedCard.title)}
-          <div style="width: 400px; height: 600px; max-width: 100%;" transition:fade>
-            <EquipmentCard {...pinnedCard} />
-          </div>
+          <!-- <Draggable> -->
+            <!-- <Resizable> -->
+              <div style="width: 400px; height: 600px; max-width: 100%;" transition:fade>
+                <EquipmentCard {...pinnedCard} />
+              </div>
+            <!-- </Resizable> -->
+          <!-- </Draggable> -->
         {/each}
       </div>
     </div>  

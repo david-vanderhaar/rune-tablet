@@ -26,10 +26,11 @@
 </script>
 
 <Draggable>
-  <div
+  <!-- <div
     on:pointerenter={handlePointerEnter}
     on:pointerleave={handlePointerLeave}
-  >
+  > -->
+  <div>
     <img 
       src={iconImageSrc}
       alt="unit icon, hoverable to show stats"

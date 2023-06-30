@@ -1,4 +1,6 @@
-export default [
+import { createPersistentStore } from '../utils/PersistentStore';
+
+const defaultBestiary = [
   {
     title: 'Skelerat',
     itemTags: ['Undead'],
@@ -27,7 +29,6 @@ export default [
       },
     ]
   },
-  // a new beast
   {
     title: 'Rat King',
     health: '3',
@@ -51,3 +52,5 @@ export default [
     ],
   },
 ]
+
+export default createPersistentStore('bestiary', defaultBestiary)

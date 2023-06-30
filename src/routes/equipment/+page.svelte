@@ -8,7 +8,6 @@
   import CardTemplateSelector from '../../components/CardTemplateSelector.svelte';
   import gearStore from "../../data/gear";
 
-
   const titleDefault = '';
   const itemTagsDefault = [];
   const rangeDefault = [];
@@ -71,6 +70,7 @@
   function saveCard() {
     gearStore.add({
       title,
+      itemTags,
       range,
       flavorText,
       extraText,
@@ -154,14 +154,14 @@
           <EquipmentCard {title} {itemTags} {range} {flavorText} {extraText} {actions} />
         </div>
         <br>
-        <div class="field is-grouped">
+        <div class="field">
           <div class="control">
             <button class="button is-primary" on:click={saveCard}>
               Save Card
             </button>
+            <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={$gearStore} />
+            <button class="button is-dark" on:click={exportComponent}>Export as PNG</button>
           </div>
-          <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={$gearStore} />
-          <button class="button is-dark ml-2" on:click={exportComponent}>Export as PNG</button>
         </div>
       </div>
     </div>

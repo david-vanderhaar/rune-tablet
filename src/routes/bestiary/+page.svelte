@@ -6,7 +6,8 @@
   import ActionList from '../../components/ActionList.svelte';
   import BeastiaryCard from '../../components/BeastiaryCard.svelte';
   import CardTemplateSelector from '../../components/CardTemplateSelector.svelte';
-  import templateCards from '../../data/beastiary';
+  import beastiaryStore from '../../data/beastiary';
+    import Resizable from '../../components/Resizable.svelte';
 
   const titleDefault = '';
   const healthDefault = '';
@@ -74,8 +75,7 @@
   }
 
   function saveCard() {
-    // Implement your logic to save the card data here
-    console.log({
+    beastiaryStore.add({
       title,
       health,
       stamina,
@@ -185,14 +185,14 @@
           <BeastiaryCard {title} {itemTags} {range} {flavorText} {extraText} {actions} {health} {stamina} />
         </div>
         <br>
-        <div class="field is-grouped">
-          <!-- <div class="control">
+        <div class="field">
+          <div class="control">
             <button class="button is-primary" on:click={saveCard}>
               Save Card
             </button>
-          </div> -->
-          <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={templateCards} />
-          <button class="button is-dark ml-2" on:click={exportComponent}>Export as PNG</button>
+            <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={$beastiaryStore} />
+            <button class="button is-dark" on:click={exportComponent}>Export as PNG</button>
+          </div>
         </div>
       </div>
     </div>
