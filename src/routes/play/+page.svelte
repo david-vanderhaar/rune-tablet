@@ -15,26 +15,15 @@
   import EnemyDraggable from "../../components/EnemyDraggable.svelte";
   import CardTemplateSelectorFullWidth from "../../components/CardTemplateSelectorFullWidth.svelte";
   import beastiary from "../../data/beastiary";
-  import gear from "../../data/gear";
-  import BeastiaryCard from "../../components/BeastiaryCard.svelte";
+  import gearStore from "../../data/gear";
   import EquipmentCard from "../../components/EquipmentCard.svelte";
 
   let pinnedCards = [];
   function onTemplateSelect(templateCard) {
     pinnedCards = [templateCard, ...pinnedCards].slice(0, 2);
   }
-  
-  let pinnedGearCards = [];
-  function onTemplateGearSelect(templateCard) {
-    console.log(templateCard);
-    pinnedGearCards = [templateCard, ...pinnedGearCards].slice(0, 1);
-  }
-  let pinnedBestiaryCards = [];
-  function onTemplateBestiarySelect(templateCard) {
-    console.log(templateCard);
-    pinnedBestiaryCards = [templateCard, ...pinnedBestiaryCards].slice(0, 1);
-  }
 
+  $: templateCards = [...beastiary, ...$gearStore];
 </script>
 
 <div id="play-page">
@@ -59,34 +48,14 @@
       </DraggableBank>
 
       <br>
-      <CardTemplateSelectorFullWidth label={"pin template cards"} templateCards={[...beastiary, ...gear]} onSelect={onTemplateSelect} />
+      <CardTemplateSelectorFullWidth label={"pin template cards"} {templateCards} onSelect={onTemplateSelect} />
       <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-start">
         {#each pinnedCards as pinnedCard (pinnedCard.title)}
           <div style="width: 400px; height: 600px; max-width: 100%;" transition:fade>
             <EquipmentCard {...pinnedCard} />
           </div>
-        <!-- <div style="width: 600px; height: 400px; max-width: 100%;" transition:fade>
-          <BeastiaryCard {...pinnedCard} />
-        </div> -->
         {/each}
       </div>
-      <!-- <CardTemplateSelectorFullWidth label={"pin equipment cards"} templateCards={gear} onSelect={onTemplateGearSelect} />
-      <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-start">
-        {#each pinnedGearCards as pinnedGearCard}
-        <div style="width: 400px; height: 600px; max-width: 100%;" transition:fade>
-          <EquipmentCard {...pinnedGearCard} />
-        </div>
-        {/each}
-      </div>
-      <br>
-      <CardTemplateSelectorFullWidth label={"pin bestiary cards"} templateCards={beastiary} onSelect={onTemplateBestiarySelect} />
-      <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-start">
-        {#each pinnedBestiaryCards as pinnedBestiaryCard}
-        <div style="width: 600px; height: 400px; max-width: 100%;" transition:fade>
-          <BeastiaryCard {...pinnedBestiaryCard} />
-        </div>
-        {/each}
-      </div> -->
     </div>  
   </div>
 </div>

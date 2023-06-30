@@ -6,7 +6,8 @@
   import ActionList from '../../components/ActionList.svelte';
   import EquipmentCard from '../../components/EquipmentCard.svelte';
   import CardTemplateSelector from '../../components/CardTemplateSelector.svelte';
-  import gearTemplateCards from '../../data/gear';
+  import gearStore from "../../data/gear";
+
 
   const titleDefault = '';
   const itemTagsDefault = [];
@@ -68,8 +69,7 @@
   }
 
   function saveCard() {
-    // Implement your logic to save the card data here
-    console.log({
+    gearStore.add({
       title,
       range,
       flavorText,
@@ -155,12 +155,12 @@
         </div>
         <br>
         <div class="field is-grouped">
-          <!-- <div class="control">
+          <div class="control">
             <button class="button is-primary" on:click={saveCard}>
               Save Card
             </button>
-          </div> -->
-          <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={gearTemplateCards} />
+          </div>
+          <CardTemplateSelector onSelect={handleSelectEquipmentTemplate} templateCards={$gearStore} />
           <button class="button is-dark ml-2" on:click={exportComponent}>Export as PNG</button>
         </div>
       </div>

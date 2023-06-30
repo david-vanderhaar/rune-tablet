@@ -1,5 +1,8 @@
-export default [
+import { createPersistentStore } from '../utils/PersistentStore';
+
+const defaultGear = [
   {
+    uuid: '1',
     title: 'Long Sword',
     itemTags: ['Weapon', 'Sword'],
     range: ['Same'],
@@ -27,6 +30,7 @@ export default [
     ]
   },
   {
+    uuid: '2',
     title: 'Boarded Shield',
     itemTags: ['Weapon', 'Shield'],
     flavorText: 'An instrument to ward off death, even if for a moment.',
@@ -47,6 +51,7 @@ export default [
     ]
   },
   {
+    uuid: '3',
     title: 'Erupting Flame',
     itemTags: ['Weapon', 'Spell'],
     flavorText: 'The fires that burned Osel Alora to the ground sit warmly in your palm.',
@@ -73,6 +78,7 @@ export default [
     ]
   },
   {
+    uuid: '4',
     title: 'Amulet of Dawn',
     itemTags: ['Gear'],
     flavorText: 'A fire that can warm even those whose fate has been taken from them.',
@@ -93,6 +99,7 @@ export default [
     ]
   },
   {
+    uuid: '5',
     title: 'Fate\'s Fury',
     itemTags: ['Rune'],
     flavorText: 'Their ruthlessness was passed down to you, a god\'s fury.',
@@ -106,4 +113,21 @@ export default [
       },
     ]
   },
+  {
+    uuid: '6',
+    title: 'Time Warp',
+    itemTags: ['Rune'],
+    flavorText: 'Time is forever, death comes only once.',
+    extraText: '',
+    actions: [
+      {
+        id: 1,
+        triggers: [],
+        actionEffect: 'You may reroll any one die in a fight.',
+        extraEffects: []
+      },
+    ]
+  }
 ]
+
+export default createPersistentStore('gear', defaultGear)
