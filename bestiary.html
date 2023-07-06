@@ -8,20 +8,21 @@
     
 		<link href="./_app/immutable/assets/0.37e8adb5.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/3.e05e33fa.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/CardTemplateSelector.7a850400.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/ActionList.7a850400.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/PersistentStore.9dcbaebf.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/Resizable.440e2185.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.374c4fd8.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.bb4c9b91.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.43c085ef.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.affbd470.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.13d16af0.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.e88cc512.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.ddc0facb.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/3.f631bf09.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/CardTemplateSelector.cac7de25.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/PersistentStore.833f8a9a.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.9d76f19c.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/Resizable.svelte_svelte_type_style_lang.ecf60e11.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.56de7b26.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2d80fb02.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.e6141b47.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2d54d1ba.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/paths.fa41074b.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.d8051324.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.a31340f4.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/3.7b191013.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/ActionList.2f3533e0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/PersistentStore.d2247ba2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.b2106bfa.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/Resizable.svelte_svelte_type_style_lang.9e6ec779.js">
   </head>
   <body>
     <div>
@@ -30,7 +31,7 @@
 <nav class="navbar section pb-2 pt-4 svelte-qfzoi3" role="navigation" aria-label="main navigation"><div class="navbar-brand"><a class="navbar-item p-0 pr-2" href="/rune-tablet/"><p class="menu-label">RUNE Tablet</p></a>
 
     
-    <a role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span>
+    <a id="navbar-menu-mobile" role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span></a></div>
 
@@ -93,18 +94,21 @@
         <br>
         <div class="field"><div class="control"><button class="button is-primary">Save Card
             </button>
-            <div class="dropdown is-up is-hoverable mb-2"><div class="dropdown-trigger"><button class="button" aria-haspopup="true" aria-controls="dropdown-menu"><span class="mr-1">Templates</span>
+            <div class="dropdown is-up mb-2 svelte-10u7xal"><div class="dropdown-trigger svelte-10u7xal"><button class="button svelte-10u7xal" aria-haspopup="true" aria-controls="dropdown-menu"><span class="mr-1">Templates</span>
       <iconify-icon icon="mi:chevron-down"></iconify-icon></button></div>
-  <div class="dropdown-menu" id="dropdown-menu" role="menu"><div class="dropdown-content"><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Skelerat</button>
-        </div><div class="dropdown-item"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark">Rat King</button>
+  <div class="dropdown-menu svelte-10u7xal" id="dropdown-menu" role="menu"><div class="dropdown-content svelte-10u7xal"><div class="dropdown-item svelte-10u7xal"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark svelte-10u7xal">Skelerat</button>
+        </div><div class="dropdown-item svelte-10u7xal"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark svelte-10u7xal">Rat King</button>
         </div></div></div></div>
+
+
             <button class="button is-dark">Export as PNG</button></div></div></div></div></div></section></main>
+
 
 
 			
 			<script>
 				{
-					__sveltekit_1ohlol8 = {
+					__sveltekit_s35w43 = {
 						assets: "/rune-tablet",
 						base: new URL(".", location).pathname.slice(0, -1),
 						env: {}
@@ -115,8 +119,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("./_app/immutable/entry/start.374c4fd8.js"),
-						import("./_app/immutable/entry/app.e88cc512.js")
+						import("./_app/immutable/entry/start.56de7b26.js"),
+						import("./_app/immutable/entry/app.d8051324.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 3],
