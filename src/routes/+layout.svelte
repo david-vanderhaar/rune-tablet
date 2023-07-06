@@ -2,6 +2,15 @@
   import { base } from "$app/paths";
 
   let mobileMenuOpen = false;
+
+  function handleClickAway(event) {
+    if (mobileMenuOpen) {
+      const dropdown = document.querySelector('#navbar-menu-mobile');
+      if (!dropdown.contains(event.target)) {
+        mobileMenuOpen = false;
+      }
+    }
+  }
 </script>
 
 <nav class="navbar section pb-2 pt-4" role="navigation" aria-label="main navigation">
@@ -11,7 +20,7 @@
     </a>
 
     <!-- svelte-ignore a11y-missing-attribute -->
-    <a role="button" class="navbar-burger {mobileMenuOpen ? 'is-active' : ''}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" on:click={() => mobileMenuOpen = !mobileMenuOpen}>
+    <a id="navbar-menu-mobile" role="button" class="navbar-burger {mobileMenuOpen ? 'is-active' : ''}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" on:click={() => mobileMenuOpen = !mobileMenuOpen}>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -30,6 +39,9 @@
   </div>
 </nav>
 <main class="section pt-0"><slot></slot></main>
+<svelte:window on:click={handleClickAway} />
+
+
 
 <style>
   /* smooth route transitions */
