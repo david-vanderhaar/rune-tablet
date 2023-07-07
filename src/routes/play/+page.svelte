@@ -22,6 +22,7 @@
 
   let pinnedCards = [];
   function onTemplateSelect(templateCard) {
+    if (pinnedCards.map((card) => card.title).includes(templateCard.title)) return;
     pinnedCards = [templateCard, ...pinnedCards].slice(0, 2);
   }
 
@@ -67,13 +68,16 @@
       <CardTemplateSelectorFullWidth label={"pin template cards"} {templateCards} onSelect={onTemplateSelect} />
       <div class="is-flex is-flex-direction-column is-align-items-center is-justify-content-start">
         {#each pinnedCards as pinnedCard (pinnedCard.title)}
-          <!-- <Draggable> -->
-            <!-- <Resizable> -->
-              <div style="width: 400px; height: 600px; max-width: 100%;" transition:fade>
+          <Draggable>
+            <Resizable>
+              <div 
+                style="width: 400px; height: 600px; max-width: 100%;"
+                transition:fade
+              >
                 <EquipmentCard {...pinnedCard} />
               </div>
-            <!-- </Resizable> -->
-          <!-- </Draggable> -->
+            </Resizable>
+          </Draggable>
         {/each}
       </div>
     </div>  

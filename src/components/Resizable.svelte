@@ -1,5 +1,8 @@
 <script>
+  export let sliderControl = false;
   let scale = 1;
+  $: minimumScale = scale <= 0.1;
+  $: maximumScale = scale >= 1;
 
   function handleResize(event) {
     event.preventDefault();
@@ -7,7 +10,53 @@
     event.stopImmediatePropagation();
     scale = parseFloat(event.target.value);
   }
+
+  function handleSizeDown(event) {
+    event.preventDefault();
+    scale = Math.max(0.1, scale - 0.1);
+  }
+
+  function handleSizeUp(event) {
+    event.preventDefault();
+    scale = Math.min(1, scale + 0.1);
+  }
 </script>
+
+<div>
+  {#if sliderControl}
+    <input 
+      type="range"
+      min="0.1"
+      max="1"
+      step="0.1"
+      bind:value={scale}
+      on:input={handleResize}
+    />
+  {/if}
+    <div>
+      <div class="button mr-1 is-small is-outlined">
+        <iconify-icon icon="mdi:drag"></iconify-icon>
+      </div>
+      <button 
+        on:click={handleSizeDown}
+        class="button mr-1 is-dark is-small"
+        disabled={minimumScale}
+      >
+        <iconify-icon icon="mi:remove"></iconify-icon>
+      </button>
+      <button
+        on:click={handleSizeUp}
+        class="button mr-1 is-dark is-small"
+        disabled={maximumScale}
+      >
+        <iconify-icon icon="mi:add"></iconify-icon>
+      </button>
+    </div>
+  <div class="resizable-content" style={`transform: scale(${scale})`}>
+    <slot></slot>
+  </div>
+</div>
+
 
 <style>
   .resizable-content {
@@ -20,11 +69,4 @@
     z-index: 100;
   }
 </style>
-
-<div>
-  <input type="range" min="0.1" max="1" step="0.1" bind:value={scale} on:input={handleResize} />
-  <div class="resizable-content" style={`transform: scale(${scale})`}>
-    <slot></slot>
-  </div>
-</div>
 

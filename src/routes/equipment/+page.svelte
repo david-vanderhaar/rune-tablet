@@ -7,6 +7,8 @@
   import EquipmentCard from '../../components/EquipmentCard.svelte';
   import CardTemplateSelector from '../../components/CardTemplateSelector.svelte';
   import gearStore from "../../data/gear";
+    import CardGallery from '../../components/CardGallery.svelte';
+    import BeastiaryCard from '../../components/BeastiaryCard.svelte';
 
   const titleDefault = '';
   const itemTagsDefault = [];
@@ -98,6 +100,7 @@
 
 <section transition:fade>
   <div class="container">
+    <CardGallery cardComponent={EquipmentCard} cardStore={gearStore} />
     <div class="columns">
       <div class="column is-half">
         <div>
@@ -150,7 +153,7 @@
       </div>
 
       <div class="column is-half">
-        <div style="width: 400px; height: 600px; max-width: 100%;" id="export-card" bind:this={exportContainer}>
+        <div style="width: 400px; height: 600px; width: 100%;" id="export-card" bind:this={exportContainer}>
           <EquipmentCard {title} {itemTags} {range} {flavorText} {extraText} {actions} />
         </div>
         <br>
@@ -167,13 +170,3 @@
     </div>
   </div>
 </section>
-
-<style>
-  .template-card {
-    /* transform: scale(0.3);
-    width: 400px;
-    height: 600px; */
-    width: 100px;
-    height: 150px;
-  }
-</style>

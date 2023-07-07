@@ -42,6 +42,18 @@
 		moving = false;
 	}
 
+  function reset() {
+    left = 0;
+    top = 0;
+    position = 'initial';
+  }
+
+  function handleDoubleClick(e) {
+    console.log('double click');
+    e.preventDefault();
+    reset();
+  }
+
   // on mount move this element to it's parent element using left and top
   onMount(() => {
     const draggable = document.getElementById(id);
@@ -72,6 +84,8 @@
 <section 
   style="left: {left}px; top: {top}px; visibility: {visibility}; position: {position};"
   on:pointerdown={handlePointerDown}
+  on:dblclick={handleDoubleClick}
+  delay={300}
   draggable="false"
   class="draggable"
   {id}

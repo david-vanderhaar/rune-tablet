@@ -35,35 +35,36 @@
 
 </script>
 
-<div class="card equipment-card">
-  <div class="card-content has-text-centered pb-0" style="background-color: white;">
-    <p class="title">{title}</p>
-    <div class="is-size-6 subtitle">
-      <p>{getHealthAndStamina(health, stamina)}</p>
-      <p>{itemTags && itemTags.join(', ')}</p>
-      {#if range && range && range.length > 0}
-        <p>Range: {range.join(', ')}</p>
-      {/if}
-    </div>
-    <hr />
-    <div class="content">
-      {#each actions as action (action)}
-        <ActionDisplay {action}/>
-      {/each}
-      <div class="bottom-content" style="background-color: white;">
-        <hr />
-        {#each allUniqueExtraEffects as extraEffect}
-          {#if extraEffects[extraEffect]}
-            <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
-          {/if}
+<div style="width: 400px; height: 600px; max-width: 100%;">
+  <div class="card equipment-card">
+    <div class="card-content has-text-centered pb-0" style="background-color: white;">
+      <p class="title">{title}</p>
+      <div class="is-size-6 subtitle">
+        <p>{getHealthAndStamina(health, stamina)}</p>
+        <p>{itemTags && itemTags.join(', ')}</p>
+        {#if range && range && range.length > 0}
+          <p>Range: {range.join(', ')}</p>
+        {/if}
+      </div>
+      <hr />
+      <div class="content">
+        {#each actions as action (action)}
+          <ActionDisplay {action}/>
         {/each}
-        <p class="has-text-centered">{extraText}</p>
-        <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
+        <div class="bottom-content" style="background-color: white;">
+          <hr />
+          {#each allUniqueExtraEffects as extraEffect}
+            {#if extraEffects[extraEffect]}
+              <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
+            {/if}
+          {/each}
+          <p class="has-text-centered">{extraText}</p>
+          <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 <style>
   .equipment-card {
     height: 100%;

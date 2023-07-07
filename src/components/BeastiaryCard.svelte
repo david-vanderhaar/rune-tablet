@@ -35,41 +35,42 @@
 
 
 </script>
-
-<div class="card display-card">
-  <div class="card-content pb-0" style="background-color: white;">
-    <div class="is-flex is-justify-content-space-between">
-      <p class="title">{title}</p>
-      <div class="is-size-6 has-text-left">
-        <p>{getHealthAndStamina(health, stamina)}</p>
-        <p>{itemTags && itemTags.join(', ')}</p>
-        {#if range && range.length > 0}
-          <p>Range: {range.join(', ')}</p>
-        {/if}
+<div style="width: 600px; height: 400px; max-height: 100%;">
+  <div class="card display-card">
+    <div class="card-content pb-0" style="background-color: white;">
+      <div class="is-flex is-justify-content-space-between">
+        <p class="title">{title}</p>
+        <div class="is-size-6 has-text-left">
+          <p>{getHealthAndStamina(health, stamina)}</p>
+          <p>{itemTags && itemTags.join(', ')}</p>
+          {#if range && range.length > 0}
+            <p>Range: {range.join(', ')}</p>
+          {/if}
+        </div>
       </div>
-    </div>
-    <hr />
-    <div class="content">
-      <div class="is-flex is-justify-content-space-around">
-        {#each actions as action (action)}
-          <ActionDisplay {action} stacked/>
-        {/each}
-      </div>
-      <div class="bottom-content" style="background-color: white;">
-        <hr />
+      <hr />
+      <div class="content">
         <div class="is-flex is-justify-content-space-around">
-          <div>
-            {#each allUniqueExtraEffects as extraEffect}
-              {#if extraEffects[extraEffect]}
-                <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
-              {/if}
-            {/each}
-          </div>
-          <div>
-            <p class="has-text-centered">{extraText}</p>
-          </div>
-          <div>
-            <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
+          {#each actions as action (action)}
+            <ActionDisplay {action} stacked/>
+          {/each}
+        </div>
+        <div class="bottom-content" style="background-color: white;">
+          <hr />
+          <div class="is-flex is-justify-content-space-around">
+            <div>
+              {#each allUniqueExtraEffects as extraEffect}
+                {#if extraEffects[extraEffect]}
+                  <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>
+                {/if}
+              {/each}
+            </div>
+            <div>
+              <p class="has-text-centered">{extraText}</p>
+            </div>
+            <div>
+              <p class="has-text-grey is-italic has-text-centered">{flavorText}</p>
+            </div>
           </div>
         </div>
       </div>
