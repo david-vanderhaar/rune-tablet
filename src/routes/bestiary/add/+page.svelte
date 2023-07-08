@@ -1,6 +1,8 @@
 <script>
   import html2canvas from 'html2canvas';
+  import { toast } from '@zerodevx/svelte-toast'
   import { fade } from 'svelte/transition';
+  import { goto } from '$app/navigation';
   import TagPicker from '../../../components/TagPicker.svelte';
   import TagInput from "../../../components/TagInput.svelte";
   import ActionList from '../../../components/ActionList.svelte';
@@ -84,6 +86,9 @@
       extraText,
       actions,
     });
+
+    toast.push('saved card')
+    goto('/bestiary');
   }
 
   let exportContainer;

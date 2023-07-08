@@ -3,7 +3,7 @@
   export let onSelect;
   export let label = 'Templates'
   export let isFullWidth = false;
-  export let dropdownDirection = 'up';
+  export let dropdownDirection = 'down';
 
   let dropdownActive = false;
 

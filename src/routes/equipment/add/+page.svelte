@@ -7,6 +7,8 @@
   import EquipmentCard from '../../../components/EquipmentCard.svelte';
   import CardTemplateSelector from '../../../components/CardTemplateSelector.svelte';
   import gearStore from "../../../data/gear";
+    import { goto } from '$app/navigation';
+    import { toast } from '@zerodevx/svelte-toast';
 
   const titleDefault = '';
   const itemTagsDefault = [];
@@ -76,6 +78,9 @@
       extraText,
       actions,
     });
+
+    toast.push('saved card')
+    goto('/equipment');
   }
 
   let exportContainer;

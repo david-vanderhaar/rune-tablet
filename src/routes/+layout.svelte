@@ -1,4 +1,5 @@
 <script>
+  import { SvelteToast } from '@zerodevx/svelte-toast'
   import { base } from "$app/paths";
 
   let mobileMenuOpen = false;
@@ -39,6 +40,7 @@
   </div>
 </nav>
 <main class="section pt-0"><slot></slot></main>
+<SvelteToast options={{ reversed: true, intro: { y: 96 } }} />
 <svelte:window on:click={handleClickAway} />
 
 
@@ -76,5 +78,15 @@
     main {
       display: block;
     }
+  }
+  :root {
+    --toastContainerTop: auto;
+    --toastContainerRight: auto;
+    --toastContainerBottom: 8rem;
+    --toastContainerLeft: calc(50vw - 8rem);
+    --toastBarHeight: 0;
+    --toastBackground: hsl(141, 71%, 48%);
+    --toastColor: hsl(141, 53%, 31%);
+    --toastBorderRadius: 0.25rem;
   }
 </style>
