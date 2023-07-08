@@ -1,12 +1,13 @@
 <script>
   import { fade } from 'svelte/transition';
   import { goto } from '$app/navigation';
+  import { base } from '$app/paths';
   import EquipmentCard from '../../components/EquipmentCard.svelte';
   import gearStore from "../../data/gear";
   import CardGallery from '../../components/CardGallery.svelte';
 
   function onClickAddCard() {
-    goto('/equipment/add');
+    goto(`${base}/equipment/add`);
   }
 </script>
 

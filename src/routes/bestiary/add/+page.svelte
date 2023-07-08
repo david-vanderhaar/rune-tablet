@@ -3,6 +3,7 @@
   import { toast } from '@zerodevx/svelte-toast'
   import { fade } from 'svelte/transition';
   import { goto } from '$app/navigation';
+  import { base } from '$app/paths';
   import TagPicker from '../../../components/TagPicker.svelte';
   import TagInput from "../../../components/TagInput.svelte";
   import ActionList from '../../../components/ActionList.svelte';
@@ -88,7 +89,7 @@
     });
 
     toast.push('saved card')
-    goto('/bestiary');
+    goto(`${base}/bestiary`);
   }
 
   let exportContainer;
@@ -111,7 +112,7 @@
 
 <section transition:fade>
   <div class="container">
-    <a href="/bestiary" class="button is-outlined mb-4">
+    <a href="{base}/bestiary" class="button is-outlined mb-4">
       <span class="icon">
         <iconify-icon icon="mi:arrow-left"></iconify-icon>
       </span>

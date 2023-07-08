@@ -1,12 +1,13 @@
 <script>
   import { fade } from 'svelte/transition';
   import { goto } from '$app/navigation';
+  import { base } from '$app/paths';
   import BeastiaryCard from '../../components/BeastiaryCard.svelte';
   import beastiaryStore from "../../data/beastiary";
   import CardGallery from '../../components/CardGallery.svelte';
 
   function onClickAddCard() {
-    goto('/bestiary/add');
+    goto(`${base}/bestiary/add`)
   }
 </script>
 

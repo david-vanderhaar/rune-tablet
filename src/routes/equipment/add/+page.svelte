@@ -1,14 +1,15 @@
 <script>
   import html2canvas from 'html2canvas';
   import { fade } from 'svelte/transition';
+  import { toast } from '@zerodevx/svelte-toast';
+  import { goto } from '$app/navigation';
+  import { base } from '$app/paths';
   import TagPicker from '../../../components/TagPicker.svelte';
   import TagInput from "../../../components/TagInput.svelte";
   import ActionList from '../../../components/ActionList.svelte';
   import EquipmentCard from '../../../components/EquipmentCard.svelte';
   import CardTemplateSelector from '../../../components/CardTemplateSelector.svelte';
   import gearStore from "../../../data/gear";
-    import { goto } from '$app/navigation';
-    import { toast } from '@zerodevx/svelte-toast';
 
   const titleDefault = '';
   const itemTagsDefault = [];
@@ -80,7 +81,7 @@
     });
 
     toast.push('saved card')
-    goto('/equipment');
+    goto(`${base}/equipment`);
   }
 
   let exportContainer;
@@ -105,7 +106,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-half">
-        <a href="/equipment" class="button is-outlined mb-4">
+        <a href="{base}/equipment" class="button is-outlined mb-4">
           <span class="icon">
             <iconify-icon icon="mi:arrow-left"></iconify-icon>
           </span>
