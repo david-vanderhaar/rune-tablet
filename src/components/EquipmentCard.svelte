@@ -35,7 +35,8 @@
 
 </script>
 
-<div style="width: 400px; height: 600px; max-width: 100%;">
+<!-- <div style="width: 400px; height: 600px; max-width: 100%;"> -->
+<div style="width: 320px; height: 480px; max-width: 100%;">
   <div class="card equipment-card">
     <div class="card-content has-text-centered pb-0" style="background-color: white;">
       <p class="title">{title}</p>
@@ -46,13 +47,13 @@
           <p>Range: {range.join(', ')}</p>
         {/if}
       </div>
-      <hr />
+      <hr class="my-1" />
       <div class="content">
         {#each actions as action (action)}
           <ActionDisplay {action}/>
         {/each}
         <div class="bottom-content" style="background-color: white;">
-          <hr />
+          <hr class="my-1" />
           {#each allUniqueExtraEffects as extraEffect}
             {#if extraEffects[extraEffect]}
               <p><em>{extraEffect}</em>: {extraEffects[extraEffect]}</p>

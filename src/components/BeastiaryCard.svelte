@@ -32,10 +32,9 @@
     getAllUniqueExtraEffectsFromActions();
     actions;
   }
-
-
 </script>
-<div style="width: 600px; height: 400px; max-height: 100%;">
+
+<div style="width: 480px; height: 320px; max-height: 100%;">
   <div class="card display-card">
     <div class="card-content pb-0" style="background-color: white;">
       <div class="is-flex is-justify-content-space-between">
@@ -48,7 +47,7 @@
           {/if}
         </div>
       </div>
-      <hr />
+      <hr class="my-1" />
       <div class="content">
         <div class="is-flex is-justify-content-space-around">
           {#each actions as action (action)}
@@ -56,7 +55,7 @@
           {/each}
         </div>
         <div class="bottom-content" style="background-color: white;">
-          <hr />
+          <hr class="my-1" />
           <div class="is-flex is-justify-content-space-around">
             <div>
               {#each allUniqueExtraEffects as extraEffect}
