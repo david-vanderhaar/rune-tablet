@@ -1,6 +1,6 @@
 <script>
   import html2canvas from 'html2canvas';
-    import { fade } from 'svelte/transition';
+  import { fade } from 'svelte/transition';
 
   let exportContainer;
 
@@ -32,8 +32,13 @@
     showButtonsFalse()
   }
 
+  let innerWidth;
+  $: isMobile = innerWidth < 768
+
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+<svelte:window bind:innerWidth={innerWidth} />
 <div
   on:pointerenter={handlePointerEnter}
   on:pointerleave={handlePointerLeave}
@@ -42,7 +47,7 @@
   <div bind:this={exportContainer}>
     <slot></slot>
   </div>
-  {#if showButtons}
+  {#if !isMobile && showButtons}
     <div class="overlay" transition:fade>
       <button
         class="button is-dark fade-button"
@@ -51,6 +56,14 @@
         Export as PNG
       </button>
     </div>
+  {/if}
+  {#if isMobile}
+    <button
+      class="button is-dark mt-2 mb-4"
+      on:click={exportComponent}
+    >
+      Export as PNG
+    </button>
   {/if}
 </div>
 
