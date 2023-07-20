@@ -23,7 +23,11 @@
   let pinnedCards = [];
   function onTemplateSelect(templateCard) {
     if (pinnedCards.map((card) => card.title).includes(templateCard.title)) return;
-    pinnedCards = [templateCard, ...pinnedCards].slice(0, 2);
+    pinnedCards = [templateCard, ...pinnedCards];
+  }
+
+  function removePinnedCard(card) {
+    pinnedCards = pinnedCards.filter((pinnedCard) => pinnedCard.title !== card.title);
   }
 
   let dice = [1, 1]
@@ -60,7 +64,12 @@
         {#each dice as die}
           <Dice />
         {/each}
-        <button class="button is-dark ml-3 mt-2" style="height: 35px; width: 35px;" on:click={addDie}>
+        <button 
+          title="add die"
+          class="button is-dark ml-3 mt-2"
+          style="height: 35px; width: 35px;"
+          on:click={addDie}
+        >
           <iconify-icon icon="mi:add"></iconify-icon>
         </button>
       </div>
@@ -70,6 +79,15 @@
         {#each pinnedCards as pinnedCard (pinnedCard.title)}
           <Draggable>
             <Resizable>
+              <span slot="controls">
+                <button 
+                  title="remove card"
+                  class="button is-small"
+                  on:click={() => removePinnedCard(pinnedCard)}
+                >
+                  <iconify-icon icon="mdi:close"></iconify-icon>
+                </button>
+              </span>
               <div 
                 style="width: 400px; height: 600px; max-width: 100%;"
                 transition:fade

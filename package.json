@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
+    "start": "npm run dev",
     "preview": "vite build && vite preview",
     "build": "vite build && npm run build_itch",
     "build_itch": "zip -r ./builds/itch.zip ./build",

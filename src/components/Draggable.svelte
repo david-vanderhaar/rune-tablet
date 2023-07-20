@@ -49,7 +49,6 @@
   }
 
   function handleDoubleClick(e) {
-    console.log('double click');
     e.preventDefault();
     reset();
   }
@@ -84,7 +83,6 @@
 <section 
   style="left: {left}px; top: {top}px; visibility: {visibility}; position: {position};"
   on:pointerdown={handlePointerDown}
-  on:dblclick={handleDoubleClick}
   delay={300}
   draggable="false"
   class="draggable"

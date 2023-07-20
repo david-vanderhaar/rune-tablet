@@ -56,5 +56,13 @@
   }
 </style>
 <Draggable>
-  <div class="die has-text-dark" class:shake={shake} on:click={handleClick}>{numberAsDie[value]}</div>
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <div
+    title="tap to roll"
+    class="die has-text-dark"
+    class:shake={shake}
+    on:click={handleClick}
+  >
+    {numberAsDie[value]}
+  </div>
 </Draggable>

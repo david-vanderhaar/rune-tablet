@@ -34,7 +34,7 @@
     />
   {/if}
     <div>
-      <div class="button mr-1 is-small is-outlined">
+      <div class="button mr-1 is-small is-outlined" title="drag to move">
         <iconify-icon icon="mdi:drag"></iconify-icon>
       </div>
       <button 
@@ -51,6 +51,7 @@
       >
         <iconify-icon icon="mi:add"></iconify-icon>
       </button>
+      <slot name="controls"></slot>
     </div>
   <div class="resizable-content" style={`transform: scale(${scale})`}>
     <slot></slot>
