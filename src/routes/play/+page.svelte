@@ -16,6 +16,7 @@
   import CardTemplateSelectorFullWidth from "../../components/CardTemplateSelectorFullWidth.svelte";
   import beastiaryStore from "../../data/beastiary";
   import gearStore from "../../data/gear";
+  import playIconStore from "../../data/playIcons";
   import EquipmentCard from "../../components/EquipmentCard.svelte";
   import Resizable from "../../components/Resizable.svelte";
   import Dice from "../../components/Dice.svelte";
@@ -28,6 +29,13 @@
 
   function removePinnedCard(card) {
     pinnedCards = pinnedCards.filter((pinnedCard) => pinnedCard.title !== card.title);
+  }
+
+  let additionalDraggableImageSource = '';
+  function addEnemyDraggable() {
+    if (!additionalDraggableImageSource) return;
+    playIconStore.add(additionalDraggableImageSource);
+    additionalDraggableImageSource = '';
   }
 
   let dice = [1, 1]
@@ -57,7 +65,29 @@
         <EnemyDraggable iconImageSrc={WoodenCrate} />
         <EnemyDraggable iconImageSrc={WoodenCrate} />
         <EnemyDraggable iconImageSrc={WoodenCrate} />
+        {#each $playIconStore as imageSource}
+          <EnemyDraggable iconImageSrc={imageSource} />
+        {/each}
       </DraggableBank>
+      <div class="field has-addons mt-2">
+        <div class="control">
+          <input 
+            class="input"
+            type="text"
+            placeholder="https://game-icons.net/icons/ffffff/000000/1x1/caro-asercion/barn-owl.svg"
+            bind:value={additionalDraggableImageSource}
+          >
+        </div>
+        <div class="control">
+          <button 
+            title="add draggable"
+            class="button is-dark"
+            on:click={addEnemyDraggable}
+          >
+            <iconify-icon icon="mi:add"></iconify-icon>
+          </button>
+        </div>
+      </div>
 
       <br>
       <div class="is-flex is-align-items-center" style="height: 40px;">

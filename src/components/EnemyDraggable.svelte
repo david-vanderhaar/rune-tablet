@@ -30,11 +30,11 @@
     on:pointerenter={handlePointerEnter}
     on:pointerleave={handlePointerLeave}
   > -->
-  <div>
+  <div class="m-1">
     <img 
       src={iconImageSrc}
-      alt="unit icon, hoverable to show stats"
-      style="min-width: 50px; min-height: 50px; background-color: {backgroundColor}; border-radius: 2px;" 
+      alt="unit icon"
+      style="width: 50px; height: 50px; background-color: {backgroundColor}; border-radius: 2px;" 
     />
 
     {#if showButtons}
