@@ -20,6 +20,7 @@
   import EquipmentCard from "../../components/EquipmentCard.svelte";
   import Resizable from "../../components/Resizable.svelte";
   import Dice from "../../components/Dice.svelte";
+  import Map from "../../components/Map.svelte";
 
   let pinnedCards = [];
   function onTemplateSelect(templateCard) {
@@ -50,6 +51,7 @@
   <div class="columns">
     <div class="column" id="grid-container">
       <Grid />
+      <!-- <Map /> -->
     </div>
     <div class="column">
       <DraggableBank>
