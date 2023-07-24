@@ -16,6 +16,7 @@ const createBrowserWritable = (key, defaultValue) => {
   subscribe((value) => localStorage.setItem(key, JSON.stringify(value)))
   return {
     subscribe,
+    update: (items) => update(() => items),
     add: (item) => update((items) => [...items, item]),
   }
 }

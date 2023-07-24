@@ -13,25 +13,20 @@
   let extraEffects = action?.extraEffects || [];
   let id = action?.id || uuidv4();
 
-  const triggerOptions = triggerStore.get();
-
   function handleTriggerTagsChange(updatedTags) {
     triggers = updatedTags;
   }
 
   function handleUpdateTriggerOptions(updatedTags) {
-    triggerStore.addUnique(updatedTags);
+    triggerStore.update(updatedTags);
   }
-
-  const extraEffectsData = extraEffectStore.getExtraEffects();
-  const extraEffectOptions = Object.keys(extraEffectsData);
 
   function handleExtraEffectTagsChange(updatedTags) {
     extraEffects = updatedTags;
   }
   
   function handleUpdateExtraEffectOptions(updatedTags) {
-    extraEffectStore.addUniqueExtraEffects(updatedTags);
+    extraEffectStore.update(updatedTags)
   }
 
   function handleAddAction(action) {
@@ -44,12 +39,11 @@
     <div>
       <TagPicker
         label="Triggers"
-        availableTags={triggerOptions}
+        availableTags={$triggerStore}
         selectedTags={triggers}
         onTagsChange={handleTriggerTagsChange}
         onUpdateTagOptions={handleUpdateTriggerOptions}
         tagSize="large"
-        deleteable={false}
       />
 
     <div class="field">
@@ -66,11 +60,10 @@
 
     <TagPicker 
       label='Extra Effects'
-      availableTags={extraEffectOptions}
+      availableTags={$extraEffectStore}
       selectedTags={extraEffects}
       onTagsChange={handleExtraEffectTagsChange}
       onUpdateTagOptions={handleUpdateExtraEffectOptions}
-      deleteable={false}
     />
 
     <button

@@ -1,6 +1,6 @@
 <script>
   import ActionDisplay from "./ActionDisplay.svelte";
-  import extraEffectStore from "../data/extraEffects";
+  import { extraEffectsDescriptions } from "../data/extraEffects";
 
   export let title = '';
   export let health = '';
@@ -11,7 +11,7 @@
   export let extraText = '';
   export let actions = [];
 
-  const extraEffects = extraEffectStore.getExtraEffects();
+  const extraEffects = extraEffectsDescriptions;
   let allUniqueExtraEffects = [];
   function getAllUniqueExtraEffectsFromActions() {
     let allExtraEffects = actions.reduce((acc, action) => {

@@ -1,4 +1,5 @@
-// let triggerOptions = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+import { createPersistentStore } from '../utils/PersistentStore';
+
 let triggerOptions = Array.from(Array(6), (x, i) => i + 1);
 
 const numberAsDie = {
@@ -14,26 +15,4 @@ export function getNumberAsDie(value) {
   return numberAsDie[value] || value;
 }
 
-function get() {
-  return triggerOptions;
-}
-
-function add(name) {
-  triggerOptions.push(name);
-}
-
-function set(newTriggerOptions) {
-  triggerOptions = newTriggerOptions;
-}
-
-function addUnique(triggerArray) {
-  triggerOptions = [...new Set([...triggerOptions, ...triggerArray])]
-}
-
-export default {
-  get,
-  add,
-  set,
-  addUnique,
-  getNumberAsDie,
-}
+export default createPersistentStore('triggerOptions', triggerOptions);
