@@ -32,6 +32,14 @@
     showButtonsFalse()
   }
 
+  function handleEdit() {
+    console.log('edit')
+  }
+
+  function handleDelete() {
+    console.log('delete')
+  }
+
   let innerWidth;
   $: isMobile = innerWidth < 768
 
@@ -49,21 +57,55 @@
   </div>
   {#if !isMobile && showButtons}
     <div class="overlay" transition:fade>
+      <div class="centered">
+        <button
+          class="button is-dark"
+          on:click={exportComponent}
+        >
+          Export as PNG
+        </button>
+        <div class="is-flex is-flex-direction-row is-flex-wrap-wrap mt-2">
+          <button
+            class="button is-light"
+            on:click={handleEdit}
+          >
+            Edit
+          </button>
+          <button
+            class="button is-danger ml-2"
+            on:click={handleDelete}
+          >
+            <span class="has-text-light">
+              <iconify-icon icon="mi:delete"></iconify-icon>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  {/if}
+  {#if isMobile}
+    <div class="mt-2 mb-4 is-flex is-flex-direction-row is-flex-wrap-wrap">
       <button
-        class="button is-dark fade-button"
+        class="button mr-1 is-dark"
         on:click={exportComponent}
       >
         Export as PNG
       </button>
+      <button
+        class="button mr-1 is-light"
+        on:click={handleEdit}
+      >
+        Edit
+      </button>
+      <button
+        class="button mr-1 is-danger is-justify-self-flex-end"
+        on:click={handleDelete}
+      >
+        <span class="has-text-light">
+          <iconify-icon icon="mi:delete"></iconify-icon>
+        </span>
+      </button>
     </div>
-  {/if}
-  {#if isMobile}
-    <button
-      class="button is-dark mt-2 mb-4"
-      on:click={exportComponent}
-    >
-      Export as PNG
-    </button>
   {/if}
 </div>
 
@@ -79,7 +121,7 @@
     justify-content: center;
     align-items: center;
   }
-  .fade-button {
+  .centered {
     position: absolute;
     top: 50%;
     left: 50%;
