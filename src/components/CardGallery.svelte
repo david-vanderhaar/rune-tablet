@@ -1,13 +1,23 @@
 <script>
-    import ExportableOnHover from "./ExportableOnHover.svelte";
+  import ExportableOnHover from "./ExportableOnHover.svelte";
 
   export let cardComponent
   export let cardStore
   export let onClickAddCard
+  export let onClickEditCard
+  export let onClickDeleteCard
   export let style = "width: 320px; height: 480px; max-width: 100%;"
 
   function handleAdd() {
     if (onClickAddCard) onClickAddCard();
+  }
+
+  function handleEdit(uuid) {
+    if (onClickEditCard) onClickEditCard(uuid);
+  }
+
+  function handleDelete(uuid) {
+    if (onClickDeleteCard) onClickDeleteCard(uuid);
   }
 </script>
 
@@ -26,7 +36,7 @@
   {/if}
   {#each $cardStore as card}
     <div class="m-2">
-      <ExportableOnHover>
+      <ExportableOnHover handleEdit={() => handleEdit(card.uuid)} handleDelete={() => handleDelete(card.uuid)} >
         <svelte:component this={cardComponent} {...card} />
       </ExportableOnHover>
     </div>

@@ -1,6 +1,9 @@
 <script>
   import html2canvas from 'html2canvas';
   import { fade } from 'svelte/transition';
+  
+  export let handleEdit = () => null;
+  export let handleDelete = () => null;
 
   let exportContainer;
 
@@ -30,14 +33,6 @@
   function handlePointerLeave(e) {
     e.preventDefault();
     showButtonsFalse()
-  }
-
-  function handleEdit() {
-    console.log('edit')
-  }
-
-  function handleDelete() {
-    console.log('delete')
   }
 
   let innerWidth;
