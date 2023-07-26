@@ -22,7 +22,6 @@
   }
 
   function onClickDeleteCard(uuid) {
-    const message = 'Are you sure you want to delete this card?'
     toast.push({
       component: {
         src: DeleteConfirmation,

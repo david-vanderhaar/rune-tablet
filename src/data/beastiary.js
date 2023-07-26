@@ -2,6 +2,7 @@ import { createPersistentStore } from '../utils/PersistentStore';
 
 const defaultBestiary = [
   {
+    uuid: '1',
     title: 'Skelerat',
     itemTags: ['Undead'],
     range: ['Same'],
@@ -30,6 +31,7 @@ const defaultBestiary = [
     ]
   },
   {
+    uuid: '2',
     title: 'Rat King',
     health: '3',
     range: ['Same', 'Adjacent'],
