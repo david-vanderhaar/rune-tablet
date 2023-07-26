@@ -34,8 +34,9 @@
 
   let additionalDraggableImageSource = '';
   function addEnemyDraggable() {
+    console.log(additionalDraggableImageSource);
     if (!additionalDraggableImageSource) return;
-    playIconStore.add(additionalDraggableImageSource);
+    playIconStore.add({src: additionalDraggableImageSource});
     additionalDraggableImageSource = '';
   }
 
@@ -67,8 +68,8 @@
         <EnemyDraggable iconImageSrc={WoodenCrate} />
         <EnemyDraggable iconImageSrc={WoodenCrate} />
         <EnemyDraggable iconImageSrc={WoodenCrate} />
-        {#each $playIconStore as imageSource}
-          <EnemyDraggable iconImageSrc={imageSource} />
+        {#each $playIconStore as icon}
+          <EnemyDraggable iconImageSrc={icon.src} />
         {/each}
       </DraggableBank>
       <div class="field has-addons mt-2">
