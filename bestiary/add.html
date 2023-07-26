@@ -9,24 +9,25 @@
 		<link href="../_app/immutable/assets/0.52c7c9e3.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/SvelteToast.126e14af.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/ActionList.7a850400.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/CardTemplateSelector.9dcbaebf.css" rel="stylesheet">
 		<link href="../_app/immutable/assets/BeastiaryCard.e05e33fa.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.96118c0b.js">
+		<link href="../_app/immutable/assets/CardTemplateSelector.9dcbaebf.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.d21bcb16.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.4a9c39e8.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.04075495.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.cc3f538d.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.af5f2f02.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/paths.4d7d9006.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.cd916998.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/0.af8f02ca.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/paths.08324ee3.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.24ca552f.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.d05419d6.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/index.608cba37.js">
 		<link rel="modulepreload" href="../_app/immutable/chunks/SvelteToast.svelte_svelte_type_style_lang.8c7b9773.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/4.e915974f.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/html2canvas.esm.7862238d.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/ActionList.eef74cf7.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/PersistentStore.e28901fb.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/CardTemplateSelector.9a37b3d4.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/BeastiaryCard.85496e2a.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/beastiary.67741f70.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/4.fe7d0a12.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BestiaryForm.7943bf18.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/html2canvas.esm.391abc2b.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/ActionList.11041012.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/extraEffects.77342253.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/BeastiaryCard.f8570900.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/CardTemplateSelector.ffd57df4.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/beastiary.a9068db3.js">
   </head>
   <body>
     <div>
@@ -46,25 +47,25 @@
       
       <a class="navbar-item" href="/rune-tablet/">About</a></div></div></nav>
 <main class="section pt-0 svelte-1nm4ziv"><section><div class="container"><a href="/rune-tablet/bestiary" class="button is-outlined mb-4"><span class="icon"><iconify-icon icon="mi:arrow-left"></iconify-icon></span>
-      <span>Back</span></a>
-    <div class="columns is-flex-wrap-wrap-reverse"><div class="column is-half"><div>
-          <div class="field"><label class="label">Name</label>
-            <div class="control"><input class="input" type="text" placeholder="Name" value=""></div></div>
+    <span>Back</span></a>
+  <div class="columns is-flex-wrap-wrap-reverse"><div class="column is-half"><div>
+        <div class="field"><label class="label">Name</label>
+          <div class="control"><input class="input" type="text" placeholder="Name" value=""></div></div>
 
-          <div class="field"><label class="label">Health</label>
-            <div class="control"><input class="input" placeholder="3" value=""></div></div>
+        <div class="field"><label class="label">Health</label>
+          <div class="control"><input class="input" placeholder="3" value=""></div></div>
 
-          <div class="field"><label class="label">Stamina</label>
-            <div class="control"><input class="input" placeholder="1" value=""></div></div>
+        <div class="field"><label class="label">Stamina</label>
+          <div class="control"><input class="input" placeholder="1" value=""></div></div>
 
-          <div class="field"><label class="label">Tags</label>
+        <div class="field"><label class="label">Tags</label>
   <div class="control"><div class="tag-input"><div class="field has-addons"><div class="control"><input class="input" type="text" placeholder="Undead" value=""></div>
         <div class="control"><button class="button is-primary" disabled>Add Tag
           </button></div></div>
       <div class="tags svelte-1m7c7ig"></div></div></div>
 </div>
 
-          <div class="tag-picker svelte-ys4b97">
+        <div class="tag-picker svelte-ys4b97">
   <label class="label">Range</label>
   <div class="tags svelte-ys4b97"><span class="tag  svelte-ys4b97">Same
         </span><span class="tag  svelte-ys4b97">Adjacent
@@ -75,18 +76,18 @@
       </span></div>
 </div>
 
-          <div><label class="label is-medium">Actions</label>
+        <div><label class="label is-medium">Actions</label>
   
   <div class="box is-outlined is-secondary button"><div class="has-text-grey">+
       </div></div></div> 
-          <br>
-          <div class="field"><label class="label">Extra Text</label>
-            <div class="control"><textarea class="textarea" placeholder="Enter any extra text"></textarea></div></div>
+        <br>
+        <div class="field"><label class="label">Extra Text</label>
+          <div class="control"><textarea class="textarea" placeholder="Enter any extra text"></textarea></div></div>
 
-          <div class="field"><label class="label">Flavor Text</label>
-            <div class="control"><textarea class="textarea" placeholder="Enter flavor text"></textarea></div></div></div></div>
+        <div class="field"><label class="label">Flavor Text</label>
+          <div class="control"><textarea class="textarea" placeholder="Enter flavor text"></textarea></div></div></div></div>
 
-      <div class="column"><div style="width: 480px; height: 320px;"><div style="width: 480px; height: 320px; max-height: 100%;"><div class="card display-card svelte-1d4zbmt"><div class="card-content pb-0" style="background-color: white;"><div class="is-flex is-justify-content-space-between"><p class="title"></p>
+    <div class="column"><div style="width: 480px; height: 320px;"><div style="width: 480px; height: 320px; max-height: 100%;"><div class="card display-card svelte-1d4zbmt"><div class="card-content pb-0" style="background-color: white;"><div class="is-flex is-justify-content-space-between"><p class="title"></p>
         <div class="is-size-6 has-text-left"><p></p>
           <p></p>
           </div></div>
@@ -97,17 +98,16 @@
             <div><p class="has-text-centered"></p></div>
             <div><p class="has-text-grey is-italic has-text-centered"></p></div></div></div></div></div></div>
 </div></div>
-        <br>
-        <div class="field"><div class="control"><button class="button is-primary">Save Card
-            </button>
-            <div class="dropdown is-down mb-2 svelte-10u7xal"><div class="dropdown-trigger svelte-10u7xal"><button class="button svelte-10u7xal" aria-haspopup="true" aria-controls="dropdown-menu"><span class="mr-1">Templates</span>
+      <br>
+      <div class="field"><div class="control"><button class="button is-primary">Create Card</button>
+          <div class="dropdown is-down mb-2 svelte-10u7xal"><div class="dropdown-trigger svelte-10u7xal"><button class="button svelte-10u7xal" aria-haspopup="true" aria-controls="dropdown-menu"><span class="mr-1">Templates</span>
       <iconify-icon icon="mi:chevron-down"></iconify-icon></button></div>
   <div class="dropdown-menu svelte-10u7xal" id="dropdown-menu" role="menu"><div class="dropdown-content svelte-10u7xal"><div class="dropdown-item svelte-10u7xal"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark svelte-10u7xal">Skelerat</button>
         </div><div class="dropdown-item svelte-10u7xal"><button class="is-flex is-justify-content-space-between button is-fullwidth is-dark svelte-10u7xal">Rat King</button>
         </div></div></div></div>
 
 
-            <button class="button is-dark">Export as PNG</button></div></div></div></div></div></section></main>
+          <button class="button is-dark">Export as PNG</button></div></div></div></div></div></section></main>
 <ul class="_toastContainer svelte-1u812xz">
 </ul>
 
@@ -116,7 +116,7 @@
 			
 			<script>
 				{
-					__sveltekit_141x3sk = {
+					__sveltekit_17r703i = {
 						assets: "/rune-tablet",
 						base: new URL("..", location).pathname.slice(0, -1),
 						env: {}
@@ -127,8 +127,8 @@
 					const data = [null,null];
 
 					Promise.all([
-						import("../_app/immutable/entry/start.96118c0b.js"),
-						import("../_app/immutable/entry/app.cd916998.js")
+						import("../_app/immutable/entry/start.d21bcb16.js"),
+						import("../_app/immutable/entry/app.24ca552f.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
 							node_ids: [0, 4],

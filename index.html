@@ -6,73 +6,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
     
-		<link href="./_app/immutable/assets/0.52c7c9e3.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/SvelteToast.126e14af.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.96118c0b.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.4a9c39e8.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.04075495.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.af5f2f02.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/paths.4d7d9006.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.cd916998.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.af8f02ca.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index.608cba37.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/SvelteToast.svelte_svelte_type_style_lang.8c7b9773.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.7b294eaf.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/entry/start.d21bcb16.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/index.4a9c39e8.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/singletons.cc3f538d.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/index.af5f2f02.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/paths.08324ee3.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/entry/app.24ca552f.js">
   </head>
   <body>
     <div>
-
-
-<nav class="navbar section pb-2 pt-4 svelte-1nm4ziv" role="navigation" aria-label="main navigation"><div class="navbar-brand"><a class="navbar-item p-0 pr-2" href="/rune-tablet/"><p class="menu-label">RUNE Tablet</p></a>
-
-    
-    <a id="navbar-menu-mobile" role="button" class="navbar-burger " aria-label="menu" aria-expanded="false" data-target="navbarBasicExample"><span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span></a></div>
-
-  <div id="navbarBasicExample" class="navbar-menu "><div class="navbar-start"><a class="navbar-item" href="/rune-tablet/play">Play</a>
-      <a class="navbar-item" href="/rune-tablet/equipment">Equipment</a>
-      <a class="navbar-item" href="/rune-tablet/bestiary">Bestiary</a>
-      
-      
-      <a class="navbar-item" href="/rune-tablet/">About</a></div></div></nav>
-<main class="section pt-0 svelte-1nm4ziv"><div class="container"><p>This is a set of tools to help creators enjoy and develop third-party content for RUNE, <a target="_blank" href="https://gilarpgs.itch.io/rune">&quot;a solo tabletop RPG inspired by the soulslike genre of video games&quot;</a>.</p>
-  <br>
-  <p><a href="/rune-tablet/equipment">Create custom equipment</a> cards and export them as PNGs.</p>
-  <p><a href="/rune-tablet/bestiary">Create custom creature</a> cards.</p>
-  <p><a href="/rune-tablet/play">Play out RUNE combat</a> on a drag and drop grid.</p>
-
-  <br>
-  <br>
-  <p class="is-italic">This was created for the RUNE RPG by <a target="_blank" href="https://gilarpgs.com/">Gila RPGs</a>. This product is not affiliated with Gila RPGs, or Spencer Campbell, in any way. I did not create RUNE. I am simply inspired by it.</p></div></main>
-<ul class="_toastContainer svelte-1u812xz">
-</ul>
-
-
-
-			
 			<script>
 				{
-					__sveltekit_141x3sk = {
+					__sveltekit_17r703i = {
 						assets: "/rune-tablet",
-						base: new URL(".", location).pathname.slice(0, -1),
+						base: "/rune-tablet",
 						env: {}
 					};
 
 					const element = document.currentScript.parentElement;
 
-					const data = [null,null];
-
 					Promise.all([
-						import("./_app/immutable/entry/start.96118c0b.js"),
-						import("./_app/immutable/entry/app.cd916998.js")
+						import("/rune-tablet/_app/immutable/entry/start.d21bcb16.js"),
+						import("/rune-tablet/_app/immutable/entry/app.24ca552f.js")
 					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 2],
-							data,
-							form: null,
-							error: null
-						});
+						kit.start(app, element);
 					});
 				}
 			</script>

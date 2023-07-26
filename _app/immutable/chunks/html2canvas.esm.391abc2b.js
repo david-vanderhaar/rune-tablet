@@ -1,4 +1,4 @@
-import{h as an}from"./singletons.04075495.js";const SQ=an("goto");/*!
+import{h as an}from"./singletons.cc3f538d.js";const SQ=an("goto");/*!
  * html2canvas 1.4.1 <https://html2canvas.hertzen.com>
  * Copyright (c) 2022 Niklas von Hertzen <https://hertzen.com>
  * Released under MIT License
