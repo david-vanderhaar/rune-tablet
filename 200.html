@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/entry/start.3fcbbd07.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/index.4a9c39e8.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/singletons.f9bffdea.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/index.af5f2f02.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/chunks/paths.6c245a75.js">
+		<link rel="modulepreload" href="/rune-tablet/_app/immutable/entry/app.aad76647.js">
+  </head>
+  <body>
+    <div>
+			<script>
+				{
+					__sveltekit_11nrp10 = {
+						assets: "/rune-tablet",
+						base: "/rune-tablet",
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("/rune-tablet/_app/immutable/entry/start.3fcbbd07.js"),
+						import("/rune-tablet/_app/immutable/entry/app.aad76647.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
