@@ -1,6 +1,7 @@
 <script>
   import { SvelteToast } from '@zerodevx/svelte-toast'
   import { base } from "$app/paths";
+  import Multiplayer from '../components/Multiplayer.svelte';
 
   let mobileMenuOpen = false;
 
@@ -21,14 +22,14 @@
     </a>
 
     <!-- svelte-ignore a11y-missing-attribute -->
-    <a id="navbar-menu-mobile" role="button" class="navbar-burger {mobileMenuOpen ? 'is-active' : ''}" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" on:click={() => mobileMenuOpen = !mobileMenuOpen}>
+    <a id="navbar-menu-mobile" role="button" class="navbar-burger {mobileMenuOpen ? 'is-active' : ''}" aria-label="menu" aria-expanded="false" data-target="navbar" on:click={() => mobileMenuOpen = !mobileMenuOpen}>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu {mobileMenuOpen ? 'is-active' : ''}">
+  <div id="navbar" class="navbar-menu {mobileMenuOpen ? 'is-active' : ''}">
     <div class="navbar-start">
       <a class="navbar-item" href="{base}/play">Play</a>
       <a class="navbar-item" href="{base}/equipment">Equipment</a>
@@ -36,6 +37,7 @@
       <!-- <a class="navbar-item" href="{base}/character">Character</a> -->
       <!-- <a class="navbar-item" href="{base}/scenarios">Scenarios</a> -->
       <a class="navbar-item" href="{base}/">About</a>
+      <Multiplayer />
     </div>
   </div>
 </nav>
