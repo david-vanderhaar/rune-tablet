@@ -44,6 +44,10 @@
     <CardGallery 
       cardComponent={EquipmentCard}
       cardStore={gearStore}
+      exportGalleryCardWidth="320"
+      exportGalleryCardHeight="480"
+      exportGalleryCardsPerRow="2"
+      exportGalleryRowsPerPage="2"
       {onClickAddCard} 
       {onClickEditCard}
       {onClickDeleteCard}

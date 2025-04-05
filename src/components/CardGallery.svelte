@@ -9,6 +9,10 @@
   export let onClickEditCard;
   export let onClickDeleteCard;
   export let style = "width: 320px; height: 480px; max-width: 100%;";
+  export let exportGalleryCardsPerRow = 3;
+  export let exportGalleryRowsPerPage = 3;
+  export let exportGalleryCardWidth = null;
+  export let exportGalleryCardHeight = null;
 
   function handleAdd() {
     if (onClickAddCard) onClickAddCard();
@@ -31,10 +35,11 @@
     const pageHeight = 297; // A4 height in mm
     const pdf = new jsPDF();
 
-    const cardsPerRow = 3;
-    const rowsPerPage = 3;
-    const cardWidth = pageWidth / cardsPerRow;
-    const cardHeight = pageHeight / rowsPerPage;
+    const cardsPerRow = exportGalleryCardsPerRow;
+    const rowsPerPage = exportGalleryRowsPerPage;
+    const pxToMm = (px) => px * 0.264583; // Convert pixels to mm (1px = 0.264583mm)
+    const cardWidth = exportGalleryCardWidth ? pxToMm(exportGalleryCardWidth) : (pageWidth / cardsPerRow);
+    const cardHeight = exportGalleryCardHeight ? pxToMm(exportGalleryCardHeight) : (pageHeight / rowsPerPage);
     const cardsPerPage = cardsPerRow * rowsPerPage;
 
     let xOffset = 0;

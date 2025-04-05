@@ -44,6 +44,10 @@
       cardComponent={BeastiaryCard}
       cardStore={beastiaryStore}
       style="width: 480px; height: 320px; max-width: 100%;"
+      exportGalleryCardWidth="480"
+      exportGalleryCardHeight="320"
+      exportGalleryCardsPerRow="1"
+      exportGalleryRowsPerPage="3"
       {onClickAddCard}
       {onClickEditCard}
       {onClickDeleteCard}
